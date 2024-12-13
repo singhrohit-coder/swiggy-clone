@@ -36,7 +36,6 @@ The project follows a simple folder structure:
 
 - **React**: The core library for building the user interface.
 - **Parcel**: A web application bundler for fast and efficient build processes.
-- **FontAwesome**: Used for icons in the navigation bar.
 - **CSS**: For styling the application and creating a responsive layout.
 
 ## Setup Instructions
@@ -45,12 +44,12 @@ Follow these steps to run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/singhrohit-coder/namastereact.git
+   git clone https://github.com/singhrohit-coder/swiggy-clone.git
    ```
 
 2. Navigate to the project folder:
    ```bash
-   cd namastereact
+   cd swiggy-clone
    ```
 
 3. Install the dependencies:
