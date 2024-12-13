@@ -84,3 +84,7 @@ Follow these steps to run the project locally:
 - **GitHub**: [singhrohit-coder](https://github.com/singhrohit-coder)
 
 ---
+<<<<<<< HEAD
+=======
+
+>>>>>>> ed4cd86d17ba35e5916dde1ddbbe7318d3ea31a4
