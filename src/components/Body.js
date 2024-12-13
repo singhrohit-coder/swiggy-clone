@@ -5,6 +5,7 @@ import Shimmer from "./shimmer";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  console.log("bodyrendered");
 
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
 
