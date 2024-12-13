@@ -1,0 +1,93 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo {
+    width: 150px;
+}
+
+
+.nav-items > ul {
+    font-size: 25px;
+    display: flex;
+    align-items: center;  
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.nav-items > ul > li {
+    padding: 10px;
+    margin: 10px
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.res-card {
+    margin: 4px;
+    padding: 4px;
+    width: 175px;
+    height: auto;
+}
+
+.res-card:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.res-logo {
+    width: 100%;
+}
+
+.filter-btn {
+    margin: 20px;
+    cursor: pointer;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    margin: 20px;
+    width: 175px;
+    height: 350px;
+    background-color: #f0f0f0;
+}
+
+.sign-btn {
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    align-items: center; /* Align items at the same vertical level */
+    justify-content: space-between; /* Ensure space between search and button */
+    gap: 10px; /* Add spacing between elements */
+
+}
+
+.search-box {
+    cursor: pointer;
+}
+
+.search-btn {
+    cursor: pointer;
+}
+
+.search-btn :hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
