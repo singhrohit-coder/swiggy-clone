@@ -67,7 +67,7 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.rating > 4.5
             );
-            setListOfRestaurants(filteredList);
+            setFilteredRestaurants(filteredList);
           }}
         >
           
