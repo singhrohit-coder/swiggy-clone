@@ -26,16 +26,6 @@ const Body = () => {
     setFilteredRestaurants(json.recipes);
   };
 
-  // Adding the Spinner
-  // if (listOfRestaurants.length === 0) {
-  //   return (
-  //     <div className="loading">
-  //       <FontAwesomeIcon icon={faSpinner} />
-  //       <p>Loading...</p>
-  //     </div>
-  //   );
-  // }
-
   
   return listOfRestaurants.length === 0 ? ( 
   <Shimmer /> 
@@ -76,7 +66,7 @@ const Body = () => {
         <div className="res-container">
 
         {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}
-          {filteredRestaurants.map((restaurant, index) => ( // index is not good for unique id but in this case it only works. */}
+          {filteredRestaurants.map((restaurant, index) => ( // index is not good for unique id, but in this case it only works. */}
             <RestaurantCard 
             key={index} // unique key for each restaurantcard.
             resData={restaurant} // Pass restaurant data to card.

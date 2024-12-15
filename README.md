@@ -62,8 +62,6 @@ Follow these steps to run the project locally:
    npm start
    ```
 
-5. Open your browser and visit `http://localhost:1234` to view the project.
-
 ## How It Works
 
 - The `Header` component displays the logo and navigation items, along with a button that toggles between "Sign in" and "Logout" based on user interaction.
@@ -84,3 +82,12 @@ Follow these steps to run the project locally:
 - **GitHub**: [singhrohit-coder](https://github.com/singhrohit-coder)
 
 ---
+
+
+
+
+
+
+
+
+
