@@ -14,6 +14,8 @@ export const Header = () => {
         <div className="nav-items"> 
           <ul>
             <li>Home</li>
+            <li>About</li>
+            <li>Contact us</li>
             <li>Offers</li>
             <li>Help</li>
             <button 
