@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
-// import {Link } from "react-router-dom"
+import {Link } from "react-router-dom"
 
 
 const Body = () => {
@@ -63,7 +63,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
+              (res) => res.info.avgRating > 4
             );
             setFilteredRestaurants(filteredList);
           }}
@@ -74,11 +74,12 @@ const Body = () => {
         <div className="res-container">
 
         {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}
-          {filteredRestaurants.map((restaurant) => ( // index is not good for unique id, but in this case it only works. */}
-            <RestaurantCard 
+          {filteredRestaurants.map((restaurant) => ( 
+            <Link 
             key={restaurant.info.id} // unique key for each restaurantcard.
-            resData={restaurant} // Pass restaurant data to card.
-            />  
+            to={"/restaurants/" + restaurant.info.id}>
+              <RestaurantCard resData={restaurant} // Pass restaurant data to card.
+            /> </Link>
           ))
           }
       </div>

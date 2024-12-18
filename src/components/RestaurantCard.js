@@ -10,6 +10,7 @@ const RestaurantCard = (props) => {
       cuisines, 
       avgRating, 
       costForTwo,
+      sla,
     } = resData?.info;
   
     // Choose the image based on the restaurant's id (assuming ids are in sequence)
@@ -28,6 +29,7 @@ const RestaurantCard = (props) => {
         <h4>{cuisines.join(", ")}</h4>
         <h4>{avgRating} stars</h4>
         <h4>{costForTwo}</h4>
+        <h4>{sla?.slaString}</h4>
         
       </div>
     ); 
