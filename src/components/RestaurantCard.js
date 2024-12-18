@@ -5,7 +5,7 @@ const RestaurantCard = (props) => {
     const {resData} = props;
   
     const {
-      //cloudinaryImageId,
+      cloudinaryImageId,
       name,
       cuisines, 
       avgRating, 
@@ -23,7 +23,7 @@ const RestaurantCard = (props) => {
         <img 
           className="res-logo"
           alt={"res-logo"}
-          src={CDN_URL} // -> placeholder image URL
+          src={CDN_URL + cloudinaryImageId } // -> placeholder image URL
         />
         <h3>{name}</h3>
         <h4>{cuisines.join(", ")}</h4>
