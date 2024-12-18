@@ -5,14 +5,15 @@ const RestaurantCard = (props) => {
     const {resData} = props;
   
     const {
-      id,
+      //cloudinaryImageId,
       name,
-      cuisine, 
-      rating, 
-    } = resData;
+      cuisines, 
+      avgRating, 
+      costForTwo,
+    } = resData?.info;
   
     // Choose the image based on the restaurant's id (assuming ids are in sequence)
-    const restaurantImage = CDN_URL[id - 1]; // Adjustiong for 0-based indexed.
+    //const restaurantImage = CDN_URL[id - 1]; // Adjustiong for 0-based indexed.
 
     return (
       
@@ -20,12 +21,13 @@ const RestaurantCard = (props) => {
       
         <img 
           className="res-logo"
-          alt={"res-logo-{id}"}
-          src={restaurantImage} // -> placeholder image URL
+          alt={"res-logo"}
+          src={CDN_URL} // -> placeholder image URL
         />
         <h3>{name}</h3>
-        <h4>{cuisine}</h4>
-        <h4>{rating} stars</h4>
+        <h4>{cuisines.join(", ")}</h4>
+        <h4>{avgRating} stars</h4>
+        <h4>{costForTwo}</h4>
         
       </div>
     ); 

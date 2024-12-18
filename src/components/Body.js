@@ -1,10 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
+// import {Link } from "react-router-dom"
 
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [listOfRestaurants, setListOfRestaurants] = useState(null);
   console.log("bodyrendered");
 
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
@@ -18,18 +19,25 @@ const Body = () => {
 
 
   const fetchData = async () => {
-    const data = await fetch(
-        "https://dummyjson.com/recipes" // when use corsproxy it gives us error.
-    );
-    const json = await data.json();
-    setListOfRestaurants(json.recipes);
-    setFilteredRestaurants(json.recipes);
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const json = await data.json();
+
+      console.log(json.data.cards[4]);
+
+      setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
+  const isLoading = listOfRestaurants === null;
+  if (isLoading) return <Shimmer />;
   
-  return listOfRestaurants.length === 0 ? ( 
-  <Shimmer /> 
-  ) : (
+  return  (
     <div className="body">
       <div className="filter">
         <div className="search">
@@ -43,19 +51,19 @@ const Body = () => {
           className="search-btn"
             onClick={() => {
               const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurants(filteredRestaurant);
             }}
           >
-            Search
+            Search 
           </button>
         </div>
         <button
           className="filter-btn"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
-              (res) => res.rating > 4.5
+              (res) => res.info.avgRating > 4.5
             );
             setFilteredRestaurants(filteredList);
           }}
@@ -66,12 +74,12 @@ const Body = () => {
         <div className="res-container">
 
         {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}
-          {filteredRestaurants.map((restaurant, index) => ( // index is not good for unique id, but in this case it only works. */}
+          {filteredRestaurants.map((restaurant) => ( // index is not good for unique id, but in this case it only works. */}
             <RestaurantCard 
-            key={index} // unique key for each restaurantcard.
+            key={restaurant.info.id} // unique key for each restaurantcard.
             resData={restaurant} // Pass restaurant data to card.
             />  
-          ))                                          
+          ))
           }
       </div>
     </div>
