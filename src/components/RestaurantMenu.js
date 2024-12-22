@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { MENU_API } from "../utils/constants"
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
+    const [resInfo, setResInfo] = useState(null);// state variables and [null] -> is the default value 
 
     const { resId } = useParams();// useParams -> for reading restaurant Id
 
