@@ -2,15 +2,17 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import {Link } from "react-router-dom"
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(null);
-  console.log("bodyrendered");
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  //console.log("bodyrendered");
 
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
+  //console.log(filteredRestaurants, setFilteredRestaurants);
 
-  const [searchText, setSearchText] = useState("");
+
+  const [searchText, setSearchText] = useState();
 
 // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
   useEffect(() => {
@@ -29,10 +31,21 @@ const Body = () => {
 
       setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      //console.log(json);
+
     } catch (error) {
       console.error("Error fetching data:", error);
+      
     }
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <h1>Look's like you're not connected to the internet!!</h1>
+    );
+  }
 
   const isLoading = listOfRestaurants === null;
   if (isLoading) return <Shimmer />;
@@ -73,8 +86,8 @@ const Body = () => {
         </div>
         <div className="res-container">
 
-        {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}
-          {filteredRestaurants.map((restaurant) => ( 
+        {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}          
+        {filteredRestaurants.map((restaurant) => ( 
             <Link 
             key={restaurant.info.id} // unique key for each restaurantcard.
             to={"/restaurants/" + restaurant.info.id}>

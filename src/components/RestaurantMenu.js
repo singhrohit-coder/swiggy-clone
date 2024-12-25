@@ -1,28 +1,11 @@
-import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import { useParams } from "react-router-dom"
-import { MENU_API } from "../utils/constants"
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);// state variables and [null] -> is the default value 
-
     const { resId } = useParams();// useParams -> for reading restaurant Id
 
-    useEffect(() => {
-        fetchMenu();
-    }, []) // if not dependency array -> it render everytime my component renders.
-
-    const fetchMenu = async () => {
-        try {
-            const data = await fetch(MENU_API + resId);// api -> restaurantId.
-            const json = await data.json(); // converting data to json.    
-            //console.log("Fetched Data:", json);
-            setResInfo(json.data);
-        
-        } catch (error) {
-            console.error("Error fetching menu data:", error);
-        }
-    };
+    const resInfo = useRestaurantMenu(resId);// Custom Hook for Fetching Data
 
     if (resInfo === null) return <Shimmer />;
 
