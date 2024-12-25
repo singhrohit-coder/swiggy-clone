@@ -7,15 +7,16 @@ const useOnlineStatus = () => {
     useEffect (() => {
 
         window.addEventListener("online", () => {
-            setOnlineStatus(true);
-        });
-
-        window.addEventListener("offlinee", () => {
-            setOnlineStatus(false);
-        });
+            setOnlineStatus(true)
+    });
+        window.addEventListener("offline", () => {
+            setOnlineStatus(false)
+    });
     }, []);
 
     return onlineStatus;// bool value
 };
 
+
 export default useOnlineStatus;
+
