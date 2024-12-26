@@ -1,5 +1,6 @@
 import {CDN_URL} from "../utils/constants";
-// path alias approach -> import { CDN_URL } from "src/utils/constants"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const RestaurantCard = (props) => {
     const {resData} = props;
@@ -13,23 +14,28 @@ const RestaurantCard = (props) => {
       sla,
     } = resData?.info;
   
-    // Choose the image based on the restaurant's id (assuming ids are in sequence)
-    //const restaurantImage = CDN_URL[id - 1]; // Adjustiong for 0-based indexed.
 
     return (
-      
-      <div className="res-card" style={{ background: "#f0f0f0" }}>
-      
-        <img 
-          className="res-logo"
+      // res-card
+      <div className="m-4 p-4 w-[250px] rounded-lg px-0 py-0 bg-gray-100 hover:bg-gray-200">
+        <img
+        // res-logo
+          className="rounded-lg box-sizing: border-box"
           alt={"res-logo"}
           src={CDN_URL + cloudinaryImageId } // -> placeholder image URL
         />
-        <h3>{name}</h3>
+        <h3 className="font-bold">{name}</h3>
+        {/* hard coded */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+        <h4 className="font-semibold"><FontAwesomeIcon icon={faStar}></FontAwesomeIcon> {avgRating}</h4>
+        
+        {/* putting [dot] character */}
+        <span style={{ margin: "0 8px" }}>•</span> 
+        <h4 className="font-semibold">{sla?.slaString}</h4>
+        </div>
+        
         <h4>{cuisines.join(", ")}</h4>
-        <h4>{avgRating} stars</h4>
         <h4>{costForTwo}</h4>
-        <h4>{sla?.slaString}</h4>
         
       </div>
     ); 

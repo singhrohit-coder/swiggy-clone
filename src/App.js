@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header"
 import Body from "./components/Body"
 //import About from "./components/About"
-import Contact from "./components/Contact"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
+import { Footer } from "./components/Footer"
+import Contact from "./components/Contact";
 //import Grocery from "./components/Grocery";
 
 //lazy loading - used to distribute code in different chunks. 
@@ -15,13 +16,14 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 // this [import] is different than above [grocery import]
 const Grocery = lazy(() => import("./components/Grocery")); // this is how we import our grocery store.
 
-const About = lazy(() => import("./components/Body"));
+const About = lazy(() => import("./components/UserClass"));
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Outlet />
+      <Outlet /> {/* This is where the Body component will be rendered */}
+      <Footer />
     </div>
   );
 };
@@ -45,6 +47,7 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+
       {
         path: "/grocery",
         element: <Suspense fallback={<h1>Loading....</h1>}>

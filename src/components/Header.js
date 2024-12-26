@@ -11,35 +11,33 @@ export const Header = () => {
   const onlineStatus = useOnlineStatus();// Custom Hook for online status
 
     return (
-      <div className="header">
+      // flex items-center
+      // header
+      <div className="flex justify-between shadow-lg mb-5">
+         {/* logo-container */}
         <div className="logo-container">
-          <img className="logo" src={LOGO_URL} />
+          {/* logo */}
+          <img className="px-4 py-2 w-28" src={LOGO_URL} />
         </div>
-        <div className="nav-items"> 
-          <ul>
-            <li>
+        {/* nav-items */}
+        <div className="_1VEUe "> 
+          <ul className="flex p-4 m-4">
+            <li className="px-4">
               Online Status : {onlineStatus ? "✅" : "🔴"}
             </li>
-            <li>
+            <li className=" px-4 xNIjm">
               <Link to="/">Home</Link>
             </li>
-            <li>
-            <Link to="/about">About us</Link>
-            </li>
-            <li>
-            <Link to="/contact">Contact us</Link>
-            </li>
-            <li>
+            <li className="px-4 xNIjm">
             <Link to="/grocery">Grocery</Link>
             </li>
-            <li>
+            <li className="px-4 xNIjm">
               <Link to="/offers">Offers</Link>
             </li>
-            <li>
-              <Link to="/help">Help</Link>
-            </li>
+            
             <button 
-            className="Sign-btn" 
+            // sign-btn
+            className="px-4 xNIjm" 
             onClick={() => {
               setBtnName(btnName === "Sign in" ? "Logout" : "Sign in");
               // btnName === "Sign in" 
@@ -49,7 +47,7 @@ export const Header = () => {
             >
               {btnName}
             </button>
-            <li>Cart</li>
+            <li className="cursor-pointer">Cart</li>
             
           </ul>  
         </div>

@@ -52,16 +52,19 @@ const Body = () => {
   
   return  (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        {/* search */}
+        <div className="search p-4 m-4">
           <input
             type="text"
-            className="search-box"
+            // search-box
+            className="w-36 border border-solid border-black rounded-lg"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-          className="search-btn"
+          // search-btn
+          className="px-2 bg-orange-400 mx-2 rounded-lg"
             onClick={() => {
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -69,11 +72,13 @@ const Body = () => {
               setFilteredRestaurants(filteredRestaurant);
             }}
           >
-            Search 
+            Search
           </button>
         </div>
+        <div className="filter m-4 p-4 flex items-center">
         <button
-          className="filter-btn"
+        // filter-btn
+          className="px-2 bg-gray-300 rounded-lg"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -84,7 +89,9 @@ const Body = () => {
           
           Top Rated Restaurants</button>
         </div>
-        <div className="res-container">
+        </div>
+        {/* res-container */}
+        <div className="flex flex-wrap justify-center">
 
         {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}          
         {filteredRestaurants.map((restaurant) => ( 
