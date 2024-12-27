@@ -17,7 +17,7 @@ export const Header = () => {
          {/* logo-container */}
         <div className="logo-container">
           {/* logo */}
-          <img className="px-4 py-2 w-28" src={LOGO_URL} />
+          <img className="px-4 py-2 w-28 cursor-pointer" src={LOGO_URL} />
         </div>
         {/* nav-items */}
         <div className="_1VEUe "> 
@@ -34,7 +34,6 @@ export const Header = () => {
             <li className="px-4 xNIjm">
               <Link to="/offers">Offers</Link>
             </li>
-            
             <button 
             // sign-btn
             className="px-4 xNIjm" 

@@ -78,7 +78,7 @@ const Body = () => {
         <div className="filter m-4 p-4 flex items-center">
         <button
         // filter-btn
-          className="px-2 bg-gray-300 rounded-lg"
+          className="px-2 bg-orange-400 mx-2 rounded-lg"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -91,9 +91,9 @@ const Body = () => {
         </div>
         </div>
         {/* res-container */}
+        {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
         <div className="flex flex-wrap justify-center">
-
-        {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}          
+            {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}          
         {filteredRestaurants.map((restaurant) => ( 
             <Link 
             key={restaurant.info.id} // unique key for each restaurantcard.
