@@ -6,13 +6,10 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  //console.log("bodyrendered");
-
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
   //console.log(filteredRestaurants, setFilteredRestaurants);
-
-
   const [searchText, setSearchText] = useState();
+  // console.log("bodyrendered", listOfRestaurants);
 
 // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
   useEffect(() => {
@@ -23,11 +20,12 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const data = await fetch(
+        // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
 
-      console.log(json.data.cards[2]);
+      // console.log(json.data.cards[2]);
 
       setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -93,12 +91,12 @@ const Body = () => {
         {/* res-container */}
         {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
         <div className="flex flex-wrap justify-center">
-            {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant returning a piece of jsx. */}          
+            {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant and returning a piece of jsx. */}          
         {filteredRestaurants.map((restaurant) => ( 
             <Link 
             key={restaurant.info.id} // unique key for each restaurantcard.
             to={"/restaurants/" + restaurant.info.id}>
-              <RestaurantCard resData={restaurant} // Pass restaurant data to card.
+              <RestaurantCard resData={restaurant} // Pass restaurant data to RestaurantCard.
             /> </Link>
           ))
           }
