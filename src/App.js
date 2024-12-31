@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header"
 import Body from "./components/Body"
@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import { Footer } from "./components/Footer"
 import Contact from "./components/Contact";
 //import Grocery from "./components/Grocery";
+import { useContext } from "react";
+import UserContext from "./utils/UserContext";
 
 //lazy loading - used to distribute code in different chunks. 
 //On demand loading
@@ -19,12 +21,31 @@ const Grocery = lazy(() => import("./components/Grocery")); // this is how we im
 const About = lazy(() => import("./components/UserClass"));
 
 const AppLayout = () => {
+
+  const [userInfo, setUserInfo] = useState();
+  
+  // Authenticatoin Feature
+  
+  useEffect(() => {
+    // Make an API Call and send username and password
+    const data = {
+      name: "Rohit"
+    }
+    setUserInfo(data.name);
+  }, []);
+
+
   return (
+    // putting our whole app inside the usercontext.provider
+    <UserContext.Provider value={{loggedInUser: userInfo}}>
     <div className="app">
+    <UserContext.Provider value={{loggedInUser: "Elon Musk" }}>
       <Header />
+      </UserContext.Provider>
       <Outlet /> {/* This is where the Body component will be rendered */}
       <Footer />
     </div>
+    </UserContext.Provider>
   );
 };
 

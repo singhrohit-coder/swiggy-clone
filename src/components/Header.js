@@ -1,12 +1,15 @@
 import { LOGO_URL } from "../utils/constants"; // Used as a Const variable bcz it is a variable.
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export const Header = () => {
 
   const [btnName, setBtnName] = useState("Sign in");
   //console.log("Header Render");
+
+  const {loggedInUser} = useContext(UserContext);
 
   const onlineStatus = useOnlineStatus();// Custom Hook for online status
 
@@ -45,7 +48,9 @@ export const Header = () => {
             }}
             >
               {btnName}
+              <li className="font-extrabold">{loggedInUser}</li>
             </button>
+
             <li className="cursor-pointer">Cart</li>
             
           </ul>  
