@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
 import {Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { BODY_API } from "../utils/constants";
+
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
-  //console.log(filteredRestaurants, setFilteredRestaurants);
+  console.log(filteredRestaurants);
+
   const [searchText, setSearchText] = useState();
   // console.log("bodyrendered", listOfRestaurants);
 
@@ -19,17 +22,15 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(
-        // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const data = await fetch(BODY_API);
+        
       const json = await data.json();
-
+      console.log(json);
       // console.log(json.data.cards[2]);
 
       setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      //console.log(json);
+      
 
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,9 +57,10 @@ const Body = () => {
           <input
             type="text"
             // search-box
-            className="w-36 border border-solid border-black rounded-lg"
+            className="w-36 pl-2 border border-solid-black rounded-lg"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
+             placeholder="Search"
           />
           <button
           // search-btn
@@ -85,9 +87,10 @@ const Body = () => {
           }}
         >
           
-          Top Rated Restaurants</button>
+           Ratings 4.0+ </button>
         </div>
         </div>
+        {/* Top Rated Restaurants */}
         {/* res-container */}
         {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
         <div className="flex flex-wrap justify-center">

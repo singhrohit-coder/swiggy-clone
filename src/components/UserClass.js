@@ -12,7 +12,7 @@ class UserClass extends React.Component {
 
         this.state = {
             userInfo: {
-                name: "Dummy",
+                name: "Abhishek",
                 locaton: "Default",
                 contact: "Default"
             }
