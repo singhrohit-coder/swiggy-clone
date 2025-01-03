@@ -9,7 +9,7 @@ import { BODY_API } from "../utils/constants";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
-  console.log(filteredRestaurants);
+  //console.log(filteredRestaurants);
 
   const [searchText, setSearchText] = useState();
   // console.log("bodyrendered", listOfRestaurants);
@@ -25,7 +25,7 @@ const Body = () => {
       const data = await fetch(BODY_API);
         
       const json = await data.json();
-      console.log(json);
+      //console.log(json);
       // console.log(json.data.cards[2]);
 
       setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);

@@ -11,12 +11,16 @@ import Contact from "./components/Contact";
 //import Grocery from "./components/Grocery";
 import { useContext } from "react";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/cart";
 
 //lazy loading - used to distribute code in different chunks. 
 //On demand loading
 //Dynamic Import
 // this [import] is different than above [grocery import]
-const Grocery = lazy(() => import("./components/Grocery")); // this is how we import our grocery store.
+// this is how we import our grocery store.
+const Grocery = lazy(() => import("./components/Grocery")); 
 
 const About = lazy(() => import("./components/UserClass"));
 
@@ -36,7 +40,9 @@ const AppLayout = () => {
 
 
   return (
-    // putting our whole app inside the usercontext.provider
+    // Providing appCart to the Application.
+    <Provider store={appStore}>
+    {/* // putting our whole app inside the usercontext.provider */}
     <UserContext.Provider value={{loggedInUser: userInfo}}>
     <div className="app">
     <UserContext.Provider value={{loggedInUser: "Elon Musk" }}>
@@ -46,6 +52,7 @@ const AppLayout = () => {
       <Footer />
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 // LOGO_URL
@@ -75,10 +82,15 @@ const appRouter = createBrowserRouter([
           <Grocery />
         </Suspense>
       },
+      
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />
-      }
+      },
+      {
+        path:"/cart",
+        element: <Cart />, 
+      },
     ],
     errorElement: <Error />,
   },

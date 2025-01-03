@@ -5,6 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
 
@@ -13,7 +14,12 @@ export const Header = () => {
 
   const {loggedInUser} = useContext(UserContext);
 
-  const onlineStatus = useOnlineStatus();// Custom Hook for online status
+  // Custom Hook for online status
+  const onlineStatus = useOnlineStatus();
+
+  // Subscribing our store using selector
+  const cartItems = useSelector((store) => store.cart.items);
+  //console.log(cartItems);
 
     return (
       // flex items-center
@@ -56,7 +62,9 @@ export const Header = () => {
               <li className="font-extrabold">{loggedInUser}</li>
             </button>
 
-            <li className="cursor-pointer">Cart</li>
+            <li className="cursor-pointer">
+              <Link to="/cart">({cartItems.length})Cart</Link></li>
+              
             
           </ul>  
         </div>

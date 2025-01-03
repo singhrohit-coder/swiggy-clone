@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
 
-    console.log("Footer Render");
+    //console.log("Footer Render");
 
     return (
 

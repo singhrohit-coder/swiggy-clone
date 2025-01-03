@@ -8,9 +8,7 @@ const RestaurantCategories = ({ data }) => {
     const handleClick = () => {
         setShowItems(!showItems);
     };
-
-    // onClick={() => {
-    //     setBtnName(btnName === "Sign in" ? "Logout" : "Sign in");
+    
     return (
         <div className="py-4">
             {/* Header */}
