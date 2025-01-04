@@ -26,15 +26,8 @@ const Cart = () => {
                 Clear Cart
             </button>
             {cartItems.length === 0 && (
-                <div>
-                    <h1>Yoyr Cart Is Empty</h1>
-                    <h3>YouCan Go To The Homepage To View The New Restaurants</h3>
-                    {/* // Use the URL from Redux store */}
-                    <img className="m-4 h-full"
-                    src={emptyCartUrl} 
-                    alt="Empty Cart"
-                    />
-                </div> 
+                <h1>Your Cart Is Empty</h1>
+                    
             )}
             <ItemList items={cartItems} />
             </div>
