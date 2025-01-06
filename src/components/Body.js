@@ -56,6 +56,7 @@ const Body = () => {
         <div className="search p-4 m-4">
           <input
             type="text"
+            data-testId = "searchInput" // for testing..
             // search-box
             className="w-36 pl-2 border border-solid-black rounded-lg"
             value={searchText}
