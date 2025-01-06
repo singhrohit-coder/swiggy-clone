@@ -9,13 +9,14 @@ it ("should load Header component with a login button", () => {
     render(
         <BrowserRouter>
     <Provider store={appStore}>
-        <Header />{/* // shows error couldn't understand the react-redux component. // For that add Provider. */}
-    </Provider>
-    {/*// After that => The above error occurred in the <Link> component.
-    // This <Link/> is coming from react-router dom.
-    // For that give Browser Router. Now it will understand <Link>. */}
+        <Header />
+        </Provider>
     </BrowserRouter>
     );
+     // shows error couldn't understand the react-redux component. // For that add Provider. */}
+    // After that => The above error occurred in the <Link> component.
+    // This <Link/> is coming from react-router dom.
+    // For that give Browser Router. Now it will understand <Link>.
 
     // let's check does it have a login button or not.
     const loginButton = screen.getByRole("button"); // -> for specific add extra parameters , ({ name: "Sign in" });
@@ -39,5 +40,5 @@ it ("should change Sign in button to Logout on click", () => {
 
     const logoutButton = screen.getByRole("button");
 
-    expect(signinButton).toBeInTheDocument();
+    expect(logoutButton).toBeInTheDocument();
 });
