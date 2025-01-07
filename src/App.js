@@ -13,7 +13,8 @@ import { useContext } from "react";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Cart from "./components/cart";
+import Cart from "./components/Cart";
+// import { SearchPage } from "./components/SearchPage";
 
 //lazy loading - used to distribute code in different chunks. 
 //On demand loading
@@ -22,14 +23,15 @@ import Cart from "./components/cart";
 // this is how we import our grocery store.
 const Grocery = lazy(() => import("./components/Grocery")); 
 
+const Search = lazy(() => import("./components/Search")); 
+
 const About = lazy(() => import("./components/UserClass"));
 
 const AppLayout = () => {
 
   const [userInfo, setUserInfo] = useState();
   
-  // Authenticatoin Feature
-  
+  // Authentication Feature
   useEffect(() => {
     // Make an API Call and send username and password
     const data = {
@@ -75,7 +77,12 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-
+      {
+        path: "/search/",
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+          <Search />
+        </Suspense>
+      },
       {
         path: "/grocery",
         element: <Suspense fallback={<h1>Loading....</h1>}>

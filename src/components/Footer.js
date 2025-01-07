@@ -8,7 +8,7 @@ export const Footer = () => {
 
         // footer
         <div className="flex bg-gray-100 justify-center shadow-gray-400 mt-5">
-            <div className="foot-items   ">
+            <div className="foot-items">
                 <ul className="flex  p-4 m-4">
                     
                     <li className="px-4 xNIjm">Help</li>

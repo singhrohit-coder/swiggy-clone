@@ -94,7 +94,7 @@ const Body = () => {
         {/* Top Rated Restaurants */}
         {/* res-container */}
         {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap justify-center ">
             {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant and returning a piece of jsx. */}          
         {filteredRestaurants.map((restaurant) => ( 
             <Link 

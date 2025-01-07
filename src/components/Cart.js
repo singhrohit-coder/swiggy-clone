@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, seeRestaurantsNearYou } from "../utils/cartSlice";
 import ItemList from "./ItemList";
-
+import Body from "./Body";
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
@@ -11,6 +11,10 @@ const Cart = () => {
     const emptyCartUrl = useSelector((store) => store.cart.emptyCartUrl);
     
     const dispatch = useDispatch();
+
+    const handleSeeRestaurantsNearYou = () => {
+        dispatch(seeRestaurantsNearYou(<Body />));
+    }
 
     const handleClearCart = () => {
         dispatch(clearCart());
@@ -26,9 +30,18 @@ const Cart = () => {
                 Clear Cart
             </button>
             {cartItems.length === 0 && (
-                <h1>Your Cart Is Empty</h1>
-                    
+                <>
+                <img src={emptyCartUrl} // use the URL redux state
+                alt="Empty Cart"
+                className="w-48 m-auto"
+                />
+                <h1 className="text-gray-600 font-bold">Your Cart Is Empty</h1>
+                </>
             )}
+            <button className="p-2 m-2 bg-orange-500 text-white font-bold rounded-lg"
+                onClick={handleSeeRestaurantsNearYou}>
+                    SEE RESTAURANTS NEAR YOU
+            </button>
             <ItemList items={cartItems} />
             </div>
         </div>
