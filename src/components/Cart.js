@@ -1,19 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart, seeRestaurantsNearYou } from "../utils/cartSlice";
 import ItemList from "./ItemList";
-import Body from "./Body";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
-    console.log(cartItems);
+    //console.log(cartItems);
 
     // Access the URL from the Redux store
     const emptyCartUrl = useSelector((store) => store.cart.emptyCartUrl);
     
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSeeRestaurantsNearYou = () => {
-        dispatch(seeRestaurantsNearYou(<Body />));
+        dispatch(seeRestaurantsNearYou());
+        navigate("/"); //navigate to home page 
+        
     }
 
     const handleClearCart = () => {
@@ -38,10 +43,12 @@ const Cart = () => {
                 <h1 className="text-gray-600 font-bold">Your Cart Is Empty</h1>
                 </>
             )}
-            <button className="p-2 m-2 bg-orange-500 text-white font-bold rounded-lg"
+            
+                <button className="p-2 m-2 bg-orange-500 text-white font-bold rounded-lg"
                 onClick={handleSeeRestaurantsNearYou}>
                     SEE RESTAURANTS NEAR YOU
             </button>
+            {/* <ItemList /> */}
             <ItemList items={cartItems} />
             </div>
         </div>

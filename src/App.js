@@ -2,19 +2,17 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header"
 import Body from "./components/Body"
-//import About from "./components/About"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import { Footer } from "./components/Footer"
 import Contact from "./components/Contact";
-//import Grocery from "./components/Grocery";
 import { useContext } from "react";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-// import { SearchPage } from "./components/SearchPage";
+
 
 //lazy loading - used to distribute code in different chunks. 
 //On demand loading
@@ -89,7 +87,6 @@ const appRouter = createBrowserRouter([
           <Grocery />
         </Suspense>
       },
-      
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />

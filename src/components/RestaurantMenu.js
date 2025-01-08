@@ -8,7 +8,7 @@ import RestaurantCategories from "./RestaurantCategories";
 const RestaurantMenu = () => {
     const { resId } = useParams();// useParams -> for reading restaurant Id
 
-    const resInfo = useRestaurantMenu(resId);// Custom Hook for Fetching Data
+    const resInfo = useRestaurantMenu(resId);// useResataurantMenu -> Custom Hook for Fetching Data
 
     if (resInfo === null) return <Shimmer />;
 

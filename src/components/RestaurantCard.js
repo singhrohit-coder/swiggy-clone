@@ -33,8 +33,8 @@ const RestaurantCard = (props) => {
         <h4 className="font-semibold">{sla?.slaString}</h4>
         </div>
         
-        <h4 className="font-semibold">{cuisines.join(", ")}</h4>
-        <h4 className="font-semibold">{costForTwo}</h4>
+        <h4 className="font-semibold text-gray-600">{cuisines.join(", ")}</h4>
+        <h4 className="font-semibold text-gray-600">{costForTwo}</h4>
         
       </div>
     ); 

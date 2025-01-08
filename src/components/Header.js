@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 
+
 export const Header = () => {
 
   const [btnName, setBtnName] = useState("Sign in");

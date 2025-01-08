@@ -6,6 +6,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { BODY_API } from "../utils/constants";
 
 
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
@@ -13,6 +14,10 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState();
   // console.log("bodyrendered", listOfRestaurants);
+
+  const [onYourMind, setOnYourMind] = useState(null);
+
+  // const [imageGrid, setImageGrid] = useState([]);
 
 // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
   useEffect(() => {
@@ -30,7 +35,12 @@ const Body = () => {
 
       setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
       setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      
+
+      const onYourMindCard = json?.data?.cards[0]?.card?.card;
+
+      setOnYourMind(onYourMindCard?.header?.title || "What's on your mind?")
+
+      // setImageGrid(onYourMindCard?.imageGridCards.info || []);
 
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -51,6 +61,23 @@ const Body = () => {
   
   return  (
     <div className="body">
+      {/* "What's on your mind?" title name */}
+      {onYourMind && (
+        <div className="px-40">
+          <h2 className="text-2xl font-bold">{onYourMind}</h2>
+          </div>
+      )}
+      {/* "What's on your mind?" image
+      <div className="">
+        {imageGridCards.map((card) => (
+          <div key={card.id} className="">
+            <img className=""
+            src={ }
+            alt=""/>
+            <div></div>
+          </div>
+        ))}
+      </div> */}
       <div className="filter flex">
         {/* search */}
         <div className="search p-4 m-4">
@@ -79,7 +106,7 @@ const Body = () => {
         <div className="filter m-4 p-4 flex items-center">
         <button
         // filter-btn
-          className="px-2 bg-orange-400 mx-2 rounded-lg"
+          className="px-4 py-1 font-normal bg-white border border-solid-black mx-2 rounded-full"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -87,8 +114,7 @@ const Body = () => {
             setFilteredRestaurants(filteredList);
           }}
         >
-          
-           Ratings 4.0+ </button>
+          Ratings 4.0+ </button>
         </div>
         </div>
         {/* Top Rated Restaurants */}
@@ -101,7 +127,8 @@ const Body = () => {
             key={restaurant.info.id} // unique key for each restaurantcard.
             to={"/restaurants/" + restaurant.info.id}>
               <RestaurantCard resData={restaurant} // Pass restaurant data to RestaurantCard.
-            /> </Link>
+            /> 
+            </Link>
           ))
           }
       </div>
