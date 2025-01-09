@@ -4,49 +4,46 @@ import Shimmer from "./shimmer";
 import {Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { BODY_API } from "../utils/constants";
+import OnlineRes from "./OnlineRes";
 
 
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
-  //console.log(filteredRestaurants);
+//   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+//   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
+//   //console.log(filteredRestaurants);
 
-  const [searchText, setSearchText] = useState();
-  // console.log("bodyrendered", listOfRestaurants);
+//   const [searchText, setSearchText] = useState();
+//   // console.log("bodyrendered", listOfRestaurants);
 
-  const [onYourMind, setOnYourMind] = useState(null);
+//   // const [imageGrid, setImageGrid] = useState([]);
 
-  // const [imageGrid, setImageGrid] = useState([]);
-
-// State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
-  useEffect(() => {
-    fetchData();
-  }, []);
+// // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
 
 
-  const fetchData = async () => {
-    try {
-      const data = await fetch(BODY_API);
+  // const fetchData = async () => {
+  //   try {
+  //     const data = await fetch(BODY_API);
         
-      const json = await data.json();
-      //console.log(json);
-      // console.log(json.data.cards[2]);
+  //     const json = await data.json();
+  //     //console.log(json);
+  //     // console.log(json.data.cards[2]);
 
-      setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //     setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //     setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-      const onYourMindCard = json?.data?.cards[0]?.card?.card;
+  //     // const onYourMindCard = json?.data?.cards[0]?.card?.card;
 
-      setOnYourMind(onYourMindCard?.header?.title || "What's on your mind?")
+  //     // setImageGrid(onYourMindCard?.imageGridCards.info || []);
 
-      // setImageGrid(onYourMindCard?.imageGridCards.info || []);
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
       
-    }
-  };
+  //   }
+  // };
 
   const onlineStatus = useOnlineStatus();
 
@@ -56,17 +53,12 @@ const Body = () => {
     );
   }
 
-  const isLoading = listOfRestaurants === null;
-  if (isLoading) return <Shimmer />;
+  // const isLoading = listOfRestaurants === null;
+  // if (isLoading) return <Shimmer />;
   
   return  (
-    <div className="body">
-      {/* "What's on your mind?" title name */}
-      {onYourMind && (
-        <div className="px-40">
-          <h2 className="text-2xl font-bold">{onYourMind}</h2>
-          </div>
-      )}
+    <div className="body border border-black box-border">
+      <OnlineRes />
       {/* "What's on your mind?" image
       <div className="">
         {imageGridCards.map((card) => (
@@ -78,9 +70,9 @@ const Body = () => {
           </div>
         ))}
       </div> */}
-      <div className="filter flex">
+      {/* <div className="filter flex">
         {/* search */}
-        <div className="search p-4 m-4">
+        {/* <div className="search p-4 m-4">
           <input
             type="text"
             data-testId = "searchInput" // for testing..
@@ -89,8 +81,8 @@ const Body = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
              placeholder="Search"
-          />
-          <button
+          />  */}
+          {/* <button
           // search-btn
           className="px-2 bg-orange-400 mx-2 rounded-lg"
             onClick={() => {
@@ -102,8 +94,8 @@ const Body = () => {
           >
             Search
           </button>
-        </div>
-        <div className="filter m-4 p-4 flex items-center">
+        </div> */}
+        {/* <div className="filter m-4 p-4 flex items-center">
         <button
         // filter-btn
           className="px-4 py-1 font-normal bg-white border border-solid-black mx-2 rounded-full"
@@ -116,13 +108,13 @@ const Body = () => {
         >
           Ratings 4.0+ </button>
         </div>
-        </div>
+        </div> */}
         {/* Top Rated Restaurants */}
         {/* res-container */}
         {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
-        <div className="flex flex-wrap justify-center ">
+        {/* <div className="flex flex-wrap justify-center "> */}
             {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant and returning a piece of jsx. */}          
-        {filteredRestaurants.map((restaurant) => ( 
+        {/* {filteredRestaurants.map((restaurant) => ( 
             <Link 
             key={restaurant.info.id} // unique key for each restaurantcard.
             to={"/restaurants/" + restaurant.info.id}>
@@ -130,8 +122,8 @@ const Body = () => {
             /> 
             </Link>
           ))
-          }
-      </div>
+          } 
+      </div>*/}
     </div>
   );
 };
