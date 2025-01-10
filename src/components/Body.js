@@ -5,6 +5,8 @@ import {Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { BODY_API } from "../utils/constants";
 import OnlineRes from "./OnlineRes";
+import TopRes from "./TopRes";
+// import MindRes from "./MindRes";
 
 
 
@@ -17,6 +19,7 @@ const Body = () => {
 //   // console.log("bodyrendered", listOfRestaurants);
 
 //   // const [imageGrid, setImageGrid] = useState([]);
+
 
 // // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
 //   useEffect(() => {
@@ -57,7 +60,10 @@ const Body = () => {
   // if (isLoading) return <Shimmer />;
   
   return  (
-    <div className="body border border-black box-border">
+    <div className="body">
+
+      {/* <MindRes /> */}
+      <TopRes />
       <OnlineRes />
       {/* "What's on your mind?" image
       <div className="">

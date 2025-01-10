@@ -6,8 +6,8 @@ export const Footer = () => {
 
     return (
 
-        // footer
-        <div className="flex bg-gray-100 justify-center shadow-gray-400 mt-5">
+        // footer shadow-gray-400 mt-5
+        <div className="flex bg-gray-200 justify-center ">
             <div className="foot-items">
                 <ul className="flex  p-4 m-4">
                     

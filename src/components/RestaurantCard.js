@@ -15,15 +15,15 @@ const RestaurantCard = (props) => {
   
 
     return (
-      // res-card
-      <div className="m-4 p-4 w-[225px] px-0 py-0 transition-transform duration-300 hover:scale-95">
+      <div>
+      <div className="res-card m-2 p-0 rounded-xl w-[195px] transition-transform duration-300 hover:scale-95 bg-white">
         <img
-        // res-logo
-          className="rounded-xl aspect-square "
+        // res-logo aspect-square
+          className="rounded-xl w-full h-[150px] object-cover"
           alt={"res-logo"}
-          src={CDN_URL + cloudinaryImageId } // -> placeholder image URL
+          src={CDN_URL + cloudinaryImageId} // -> placeholder image URL
         />
-        <h3 className="font-bold">{name}</h3>
+        <h3 className="font-bold truncate">{name}</h3>
         {/* hard coded */}
         <div style={{ display: "flex", alignItems: "center" }}>
         <h4 className="font-semibold">🌟 {avgRating}</h4>
@@ -33,12 +33,14 @@ const RestaurantCard = (props) => {
         <h4 className="font-semibold">{sla?.slaString}</h4>
         </div>
         
-        <h4 className="font-semibold text-gray-600">{cuisines.join(", ")}</h4>
+        <h4 className="font-semibold text-gray-600 truncate">{cuisines.join(", ")}</h4>
         <h4 className="font-semibold text-gray-600">{costForTwo}</h4>
         
       </div>
+      </div>
     ); 
 };
+
 
 export default RestaurantCard;
 

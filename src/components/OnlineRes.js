@@ -31,7 +31,9 @@ const OnlineRes = () => {
         // setOnYourMind(mainTitle?.cards[0]?.card?.card?.header?.title);
         // setTopChains(mainTitle?.cards[1]?.card?.card?.header?.title);
         setResOnline(mainTitle?.cards[2]?.card?.card?.title);
+        //console.log(setResOnline);
         setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        //console.log(setListOfRestaurants);
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     
         // setImageGrid(onYourMindCard?.imageGridCards.info || []);
@@ -42,12 +44,13 @@ const OnlineRes = () => {
     };
 
     return (
-        <div className="body border border-black box-border">
+      <div className="px-32 ">
+        <div className="body px-0">
           {resOnline && (
             <div>
-              <div className="px-32">
+              <div className="px-24">
               {/* Online Restaurants Title */}
-              <h2 className="text-2xl font-bold my-8 rounded-lg">
+              <h2 className="text-2xl font-bold my-8">
                 {resOnline}
               </h2>
               </div>
@@ -59,6 +62,7 @@ const OnlineRes = () => {
                     to={"/restaurants/" + restaurant.info.id}
                   >
                     <RestaurantCard resData={restaurant} />
+                  
                   </Link>
                 ))}
               </div>
@@ -105,6 +109,7 @@ const OnlineRes = () => {
      */}
           </div>
           )}
+        </div>
         </div>
       );
 };
