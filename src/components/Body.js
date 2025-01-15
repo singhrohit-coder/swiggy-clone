@@ -11,42 +11,6 @@ import Footer from "./Footer";
 
 
 const Body = () => {
-//   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-//   const [filteredRestaurants, setFilteredRestaurants] = useState([]); // for making search functionality
-//   //console.log(filteredRestaurants);
-
-//   const [searchText, setSearchText] = useState();
-//   // console.log("bodyrendered", listOfRestaurants);
-
-//   // const [imageGrid, setImageGrid] = useState([]);
-
-
-// // State Variable = Whenever state variables update, react triggers a reconciliation cycle(re-renders the component).
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
-
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await fetch(BODY_API);
-        
-  //     const json = await data.json();
-  //     //console.log(json);
-  //     // console.log(json.data.cards[2]);
-
-  //     setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-  //     setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-  //     // const onYourMindCard = json?.data?.cards[0]?.card?.card;
-
-  //     // setImageGrid(onYourMindCard?.imageGridCards.info || []);
-
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-      
-  //   }
-  // };
 
   const onlineStatus = useOnlineStatus();
 
@@ -65,17 +29,6 @@ const Body = () => {
       {/* <TopRes /> */}
       <OnlineRes />
       <Footer />
-      {/* "What's on your mind?" image
-      <div className="">
-        {imageGridCards.map((card) => (
-          <div key={card.id} className="">
-            <img className=""
-            src={ }
-            alt=""/>
-            <div></div>
-          </div>
-        ))}
-      </div> */}
       {/* <div className="filter flex">
         {/* search */}
         {/* <div className="search p-4 m-4">
@@ -115,21 +68,6 @@ const Body = () => {
           Ratings 4.0+ </button>
         </div>
         </div> */}
-        {/* Top Rated Restaurants */}
-        {/* res-container */}
-        {/* grid grid-cols-4 gap-2 md:grid-cols-2 */}
-        {/* <div className="flex flex-wrap justify-center "> */}
-            {/* //what we did here ? inside res-container loop over resList doing .map for each restaurant and returning a piece of jsx. */}          
-        {/* {filteredRestaurants.map((restaurant) => ( 
-            <Link 
-            key={restaurant.info.id} // unique key for each restaurantcard.
-            to={"/restaurants/" + restaurant.info.id}>
-              <RestaurantCard resData={restaurant} // Pass restaurant data to RestaurantCard.
-            /> 
-            </Link>
-          ))
-          } 
-      </div>*/}
     </div>
   );
 };

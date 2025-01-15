@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 const OnlineRes = () => {
 
-    // const [onYourMind, setOnYourMind] = useState();
-    // const [topChains, setTopChains] = useState();
     const [resOnline, setResOnline] = useState("");
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -23,20 +21,14 @@ const OnlineRes = () => {
         try {
         const data = await fetch(BODY_API);
         const json = await data.json();
-          //console.log(json);
-          // console.log(json.data.cards[2]);
     
         const mainTitle = json?.data;
-
-        // setOnYourMind(mainTitle?.cards[0]?.card?.card?.header?.title);
-        // setTopChains(mainTitle?.cards[1]?.card?.card?.header?.title);
         setResOnline(mainTitle?.cards[1]?.card?.card?.title);
         //console.log(setResOnline);
         setListOfRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         //console.log(json?.data?.cards);
         setFilteredRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    
-        // setImageGrid(onYourMindCard?.imageGridCards.info || []);
+        
     } catch (error) {
         console.error("Error fetching data:", error);
     }      
