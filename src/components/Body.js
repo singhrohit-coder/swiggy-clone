@@ -6,8 +6,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { BODY_API } from "../utils/constants";
 import OnlineRes from "./OnlineRes";
 import TopRes from "./TopRes";
+import Footer from "./Footer";
 // import MindRes from "./MindRes";
-
 
 
 const Body = () => {
@@ -61,10 +61,10 @@ const Body = () => {
   
   return  (
     <div className="body">
-
       {/* <MindRes /> */}
-      <TopRes />
+      {/* <TopRes /> */}
       <OnlineRes />
+      <Footer />
       {/* "What's on your mind?" image
       <div className="">
         {imageGridCards.map((card) => (

@@ -23,7 +23,7 @@ const cartSlice = createSlice({
             state.items.length = 0;
         },
         seeRestaurantsNearYou: (state, action) => {
-            state.items.push(action.payload);
+            state.restaurants = action.payload;  //update the list of restaurants, not the cart items
         }
     },
 });

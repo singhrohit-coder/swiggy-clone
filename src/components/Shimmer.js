@@ -9,22 +9,6 @@ const Shimmer = () => {
             <div className="shimmer-card"></div>
             <div className="shimmer-card"></div>
             <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div> 
         </div>
     );
 };

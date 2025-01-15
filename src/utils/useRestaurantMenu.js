@@ -4,6 +4,7 @@ import { MENU_API } from "../utils/constants"
 const useRestaurantMenu = (resId) => { // resId -> input
 
     const [resInfo, setResInfo] = useState(null);
+    console.log(resInfo, setResInfo);
 
     useEffect(() => {
         fetchData();

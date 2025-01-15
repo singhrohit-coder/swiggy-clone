@@ -5,9 +5,9 @@ import Body from "./components/Body"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
-import { Footer } from "./components/Footer"
 import Contact from "./components/Contact";
 import { useContext } from "react";
+// import Footer from "./components/Footer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
@@ -43,15 +43,16 @@ const AppLayout = () => {
     // Providing appCart to the Application.
     <Provider store={appStore}>
     {/* // putting our whole app inside the usercontext.provider */}
-    <UserContext.Provider value={{loggedInUser: userInfo}}>
+    {/* <UserContext.Provider value={{loggedInUser: userInfo}}> */}
     <div className="app">
-    <UserContext.Provider value={{loggedInUser: "Elon Musk" }}>
+    {/* value={{loggedInUser: "Elon Musk" }} */}
+    <UserContext.Provider >
       <Header />
       </UserContext.Provider>
       <Outlet /> {/* This is where the Body component will be rendered */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
-    </UserContext.Provider>
+    {/* </UserContext.Provider> */}
     </Provider>
   );
 };
@@ -91,7 +92,7 @@ const appRouter = createBrowserRouter([
         path: "/restaurants/:resId",
         element: <RestaurantMenu />
       },
-      {
+      {  
         path:"/cart",
         element: <Cart />, 
       },

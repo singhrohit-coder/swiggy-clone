@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
     //console.log(cartItems);
@@ -16,6 +17,7 @@ const Cart = () => {
     const navigate = useNavigate();
 
     const handleSeeRestaurantsNearYou = () => {
+        //console.log("Dispatching seeRestaurantsNearYou action");
         dispatch(seeRestaurantsNearYou());
         navigate("/"); //navigate to home page 
         
@@ -44,10 +46,12 @@ const Cart = () => {
                 </>
             )}
             
+            {cartItems.length === 0 && (
                 <button className="p-2 m-2 bg-orange-500 text-white font-bold rounded-lg"
                 onClick={handleSeeRestaurantsNearYou}>
                     SEE RESTAURANTS NEAR YOU
             </button>
+            )}
             {/* <ItemList /> */}
             <ItemList items={cartItems} />
             </div>

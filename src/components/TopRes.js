@@ -21,6 +21,7 @@ const TopRes = () => {
             setResChainsTitle(json?.data?.cards[1]?.card?.card?.header?.title);
             setResChainCard(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setFilterChainCard(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            console.log(json?.data)
 
         } catch {
             console.error("Error fetching Data:", error);
@@ -29,50 +30,50 @@ const TopRes = () => {
 
 
     return (
-        // <div className="TopResBody px-32 border border-blue-950 box-border bg-yellow-300">
-        //         <div>
-        //         {resChainsTitle && <h2 
-        //         className="resChainsTitle px-24 text-2xl font-bold bg-orange-400">{resChainsTitle}
-        //         </h2>}
+        <div className="TopResBody px-32 shadow-sm">
+                <div>
+                {resChainsTitle && <h2 
+                className="resChainsTitle px-3 text-2xl font-bold">{resChainsTitle}
+                </h2>}
                 
-        //         <div className="resChainCard px-20 flex overflow-x-auto no-scrollbar">
-        //             {filterChainCard.map((restaurant) => (
-        //                 <Link 
-        //                 key={restaurant?.info?.id}
-        //                 to={"/restaurants/" + restaurant.info.id}
-        //                 >
-        //                     <TopResCard topCard={restaurant} />
-        //                 </Link>
-        //             ))}
-        //             </div>
-        //         </div>
-        //  </div>  
+                <div className="resChainCard px-0 flex overflow-x-auto no-scrollbar">
+                    {filterChainCard.map((restaurant) => (
+                        <Link 
+                        key={restaurant?.info?.id}
+                        to={"/restaurants/" + restaurant.info.id}
+                        >
+                            <TopResCard topCard={restaurant} />
+                        </Link>
+                    ))}
+                    </div>
+                </div>
+         </div>  
 
-        <div className="px-32 ">
-    <div className="body px-0">
-      {/* Restaurant Chains Title */}
-      {resChainsTitle && (
-        <div className="px-24">
-          <h2 className="text-2xl font-bold my-4">
-            {resChainsTitle}
-          </h2>
-        </div>
-      )}
+  //       <div className="px-32 ">
+  //   <div className="body px-0">
+  //     {/* Restaurant Chains Title */}
+  //     {resChainsTitle && (
+  //       <div className="px-24">
+  //         <h2 className="text-2xl font-bold my-4">
+  //           {resChainsTitle}
+  //         </h2>
+  //       </div>
+  //     )}
 
-      {/* Restaurant Chain Cards */}
-      <div className="flex overflow-x-auto no-scrollbar px-20 border-b-gray-300 shadow-sm"
-      style={{ height: "325px" }}>
-        {filterChainCard.map((restaurant) => (
-          <Link 
-            key={restaurant?.info?.id} 
-            to={"/restaurants/" + restaurant.info.id}
-          >
-            <TopResCard topCard={restaurant} />
-          </Link>
-        ))}
-      </div>
-    </div>
-  </div>
+  //     {/* Restaurant Chain Cards */}
+  //     <div className="flex overflow-x-auto no-scrollbar px-20 border-b-gray-300 shadow-sm"
+  //     style={{ height: "325px" }}>
+  //       {filterChainCard.map((restaurant) => (
+  //         <Link 
+  //           key={restaurant?.info?.id} 
+  //           to={"/restaurants/" + restaurant.info.id}
+  //         >
+  //           <TopResCard topCard={restaurant} />
+  //         </Link>
+  //       ))}
+  //     </div>
+  //   </div>
+  // </div>
     );
 };
 

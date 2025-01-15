@@ -30,11 +30,11 @@ const OnlineRes = () => {
 
         // setOnYourMind(mainTitle?.cards[0]?.card?.card?.header?.title);
         // setTopChains(mainTitle?.cards[1]?.card?.card?.header?.title);
-        setResOnline(mainTitle?.cards[2]?.card?.card?.title);
+        setResOnline(mainTitle?.cards[1]?.card?.card?.title);
         //console.log(setResOnline);
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        //console.log(setListOfRestaurants);
-        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        //console.log(json?.data?.cards);
+        setFilteredRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     
         // setImageGrid(onYourMindCard?.imageGridCards.info || []);
     } catch (error) {
@@ -44,11 +44,11 @@ const OnlineRes = () => {
     };
 
     return (
-      <div className="px-32 ">
+      <div className="px-32">
         <div className="body px-0">
           {resOnline && (
             <div>
-              <div className="px-24">
+              <div className="px-3">
               {/* Online Restaurants Title */}
               <h2 className="text-2xl font-bold my-8">
                 {resOnline}
