@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: [],
+        items: [], // list of items in the cart
         emptyCartUrl: "https://cdn.dineorder.com/public/asset/img/cook.png", // Add image URL here
     }, 
     reducers: {
@@ -13,9 +13,11 @@ const cartSlice = createSlice({
             state.items.push(action.payload)
         },
         // this reducer function will not need any action.
-        removeItem: (state) => {
+        removeItem: (state, action) => {
             // we're mutating/modifying our state here.
-            state.items.pop();
+            state.items = state.items.filter(
+                (item) => item?.card?.info?.id !== action.payload.card?.info?.id
+            )
         },
         // this reducer function will not need any action.
         clearCart: (state) => {

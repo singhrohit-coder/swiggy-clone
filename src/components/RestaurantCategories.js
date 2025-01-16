@@ -9,7 +9,6 @@ const RestaurantCategories = ({ data }) => {
     const handleClick = () => {
         setShowItems(!showItems);
         // setShowCarousel(!showCarousel);
-
     };
     
     return (

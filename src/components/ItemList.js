@@ -1,14 +1,23 @@
 import { CDN_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { addItem } from "../utils/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const ItemList = ({items}) => {
     //console.log(items);
 
-    const dispatch = useDispatch();
-// add [item] to our cart
+    const cartItems = useSelector((store) => store.cart.items);
+
+     const dispatch = useDispatch();
+     // add [item] to our cart
     const handleAddItems = (item) => {
         dispatch(addItem(item));
+    };
+    const handleRemoveItems = (item) => {
+        dispatch(removeItem(item));
+    };
+
+    const isItemInCart = (item) => {
+        return cartItems.some((cartItem) => cartItem?.card?.info?.id === item?.card?.info?.id);
     };
 
     return (
@@ -30,23 +39,6 @@ const ItemList = ({items}) => {
                     </div>
                     <p className="text-sm font-medium">{item?.card?.info?.description}</p>
                     </div>
-                    {/* <div className="w-3/12 p-2">
-                    <div className="relative">
-                    <img src={CDN_URL + item?.card?.info?.imageId} 
-                    className="w-full rounded-lg"/>
-                    
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center bg-white rounded-lg shadow-lg border border-gray-300">
-                    <div>
-                    <button className="px-8 py-2 text-green-600 font-bold text-lg"
-                    onClick={() => handleAddItems(item)}
-                    > 
-                    ADD </button>
-                    </div>
-                    <div className="mt-2">
-                    <p className="text-gray-500 text-center text-sm font-medium">Customisable</p>
-                    </div>
-                    </div>
-                    </div> */}
                     <div className="w-3/12 p-2">
                     <div className="relative">
                       <img
@@ -57,17 +49,22 @@ const ItemList = ({items}) => {
                       <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
                       {/* Button Container */}
                       <div className="bg-white rounded-lg shadow-lg border border-gray-300 px-8 py-1">
-                        <button
+                        {isItemInCart(item) ? (
+                            <button
+                            className="text-green-600 font-bold text-lg"
+                            onClick={() => handleRemoveItems(item)}
+                            >
+                              REMOVE
+                              </button> 
+                        ) : (
+                            <button
                         className="text-green-600 font-bold text-lg"
                         onClick={() => handleAddItems(item)}
                         >
                           ADD
                           </button>
+                        )}
                           </div>
-                          {/* "Customisable" Text */}
-                          {/* <div className="mt-1">
-                          <p className="text-gray-500 text-sm font-medium">Customisable</p>
-                          </div> */}
                           </div>
                           </div>
                           </div>

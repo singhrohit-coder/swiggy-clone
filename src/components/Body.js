@@ -1,9 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
-import Shimmer from "./shimmer";
-import {Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { BODY_API } from "../utils/constants";
 import OnlineRes from "./OnlineRes";
 import TopRes from "./TopRes";
 import Footer from "./Footer";

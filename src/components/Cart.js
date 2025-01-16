@@ -4,8 +4,6 @@ import ItemList from "./ItemList";
 import { useNavigate } from "react-router-dom";
 
 
-
-
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items);
     //console.log(cartItems);
