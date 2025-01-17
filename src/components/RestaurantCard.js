@@ -9,14 +9,14 @@ const RestaurantCard = (props) => {
       name,
       cuisines, 
       avgRating, 
-      // costForTwo,
+      costForTwo,
       sla,
     } = resData?.info;
   
 
     return (
       <div>
-      <div className="res-card p-0 m-5 rounded-xl w-[195px] transition-transform duration-300 hover:scale-95">
+      <div className="res-card p-0 m-5 rounded-xl w-[195px] transition-transform duration-300 hover:scale-95 bg-yellow-200">
         <img
         // res-logo aspect-square
           className="rounded-xl w-full h-[130px] object-cover"
@@ -36,7 +36,7 @@ const RestaurantCard = (props) => {
         </div>
         
         <h4 className="font-semibold text-gray-600 truncate">{cuisines.join(", ")}</h4>
-        {/* <h4 className="font-semibold text-gray-600">{costForTwo}</h4> */}
+        <h4 className="font-semibold text-gray-600">{costForTwo}</h4>
         
       </div>
       </div>

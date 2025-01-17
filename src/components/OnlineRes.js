@@ -3,17 +3,15 @@ import { BODY_API } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import ButtonList from "./ButtonList";
-import RateButton from "./RateButton";
-import { list } from "postcss";
-
 
 const OnlineRes = () => {
 
     const [resOnline, setResOnline] = useState("");
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    //console.log(listOfRestaurants);
 
-    const [searchText, setSearchText] = useState("");
+    //const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -32,9 +30,9 @@ const OnlineRes = () => {
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
         setListOfRestaurants(restaurants);
-        //console.log(json?.data?.cards);
+        console.log(restaurants);
         setFilteredRestaurants(restaurants);
-        //console.log(json?.data?.cards[2]);   
+        console.log(restaurants);   
     } catch (error) {
         console.error("Error fetching data:", error);
     }      
@@ -48,13 +46,14 @@ const OnlineRes = () => {
             <div>
               <div className="px-3">
               {/* Online Restaurants Title */}
-              <h2 className="text-2xl font-bold my-8">
+              <h2 className="text-2xl font-bold my-4">
                 {resOnline}
               </h2>
               </div>
               <ButtonList 
               listOfRestaurants={listOfRestaurants}
               setFilteredRestaurants={setFilteredRestaurants}
+              className="mb-20"
               />
               {/* Restaurant Cards */}
               <div className="flex flex-wrap justify-center">
@@ -92,23 +91,6 @@ const OnlineRes = () => {
                     Search
                   </button>
                 </div> */}
-    
-                {/* Filter Button */}
-                {/* <div className="filter m-4 p-4 flex items-center">
-                  <button
-                    className="px-4 py-1 font-normal bg-white border border-solid-black mx-2 rounded-full"
-                    onClick={() => {
-                      const filteredList = listOfRestaurants.filter(
-                        (res) => res.info.avgRating > 4
-                      );
-                      setFilteredRestaurants(filteredList);
-                    }}
-                  >
-                    Ratings 4.0+
-                  </button>
-                </div>
-              </div>
-     */}
           </div>
           )}
         </div>
