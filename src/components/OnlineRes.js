@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { BODY_API } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
+import ButtonList from "./ButtonList";
+import RateButton from "./RateButton";
+import { list } from "postcss";
 
 
 const OnlineRes = () => {
@@ -23,14 +26,15 @@ const OnlineRes = () => {
         const json = await data.json();
     
         const mainTitle = json?.data;
-        setResOnline(mainTitle?.cards[1]?.card?.card?.title);
-        //console.log(mainTitle?.cards[0]);
-        setListOfRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setResOnline(mainTitle?.cards[2]?.card?.card?.title);
+        //console.log(mainTitle?.cards[2]);
+        const restaurants =
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+        setListOfRestaurants(restaurants);
         //console.log(json?.data?.cards);
-        setFilteredRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        //console.log(json?.data?.cards[2]);
-
-        
+        setFilteredRestaurants(restaurants);
+        //console.log(json?.data?.cards[2]);   
     } catch (error) {
         console.error("Error fetching data:", error);
     }      
@@ -48,6 +52,10 @@ const OnlineRes = () => {
                 {resOnline}
               </h2>
               </div>
+              <ButtonList 
+              listOfRestaurants={listOfRestaurants}
+              setFilteredRestaurants={setFilteredRestaurants}
+              />
               {/* Restaurant Cards */}
               <div className="flex flex-wrap justify-center">
                 {filteredRestaurants.map((restaurant) => (

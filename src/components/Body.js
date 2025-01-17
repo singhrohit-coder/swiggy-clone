@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+//import RestaurantCard from "./RestaurantCard";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import OnlineRes from "./OnlineRes";
 import TopRes from "./TopRes";
@@ -22,7 +22,7 @@ const Body = () => {
   return  (
     <div className="body">
       {/* <MindRes /> */}
-      {/* <TopRes /> */}
+      <TopRes />
       <OnlineRes />
       <Footer />
       {/* <div className="filter flex">
