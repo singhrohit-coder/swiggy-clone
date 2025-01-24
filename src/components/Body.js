@@ -3,7 +3,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import OnlineRes from "./OnlineRes";
 import TopRes from "./TopRes";
 import Footer from "./Footer";
-// import MindRes from "./MindRes";
+import MindRes from "./MindRes";
 
 
 const Body = () => {
@@ -21,8 +21,8 @@ const Body = () => {
   
   return  (
     <div className="body">
-      {/* <MindRes /> */}
-      <TopRes />
+      <MindRes />
+      {/* <TopRes /> */}
       <OnlineRes />
       <Footer />
       {/* <div className="filter flex">

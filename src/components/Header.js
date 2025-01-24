@@ -26,7 +26,7 @@ export const Header = () => {
     return (
       // flex items-center
       // header shadow-lg mb-5
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center shadow-md">
          {/* logo-container */}
          <Link to="/">
         <div className="logo-container">

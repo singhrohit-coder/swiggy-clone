@@ -16,3 +16,6 @@ export const MENU_API =
 
 export const PRE_SEARCH = 
 "https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=25.4329271&lng=81.7583495";
+
+export const MIND_IMAGE_API = 
+"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";

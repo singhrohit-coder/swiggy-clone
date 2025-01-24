@@ -23,14 +23,14 @@ const TopRes = () => {
             setFilterChainCard(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             console.log(json?.data)
 
-        } catch {
+        } catch (error) {
             console.error("Error fetching Data:", error);
         }
     };
 
 
     return (
-        <div className="TopResBody px-32 shadow-sm">
+        <div className="TopResBody px-32 shadow-md mt-10">
                 <div>
                 {resChainsTitle && <h2 
                 className="resChainsTitle px-3 text-2xl font-bold">{resChainsTitle}

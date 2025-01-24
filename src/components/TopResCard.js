@@ -16,7 +16,7 @@ const TopResCard = (props) => {
 
     return (
         <div>
-        <div className="m-4 p-0 rounded-xl w-[250px] transition-transform duration-300 hover:scale-95">
+        <div className="m-4 p-0 rounded-xl w-[250px] transition-transform duration-300 hover:scale-95 shadow-lg">
             <img className="rounded-xl w-full h-[175px] object-cover"
             alt={"res-logo"}
             src={CDN_URL + cloudinaryImageId}

@@ -27,12 +27,12 @@ const OnlineRes = () => {
         setResOnline(mainTitle?.cards[2]?.card?.card?.title);
         //console.log(mainTitle?.cards[2]);
         const restaurants =
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
         setListOfRestaurants(restaurants);
-        console.log(restaurants);
+        //console.log(restaurants);
         setFilteredRestaurants(restaurants);
-        console.log(restaurants);   
+        //console.log(restaurants);   
     } catch (error) {
         console.error("Error fetching data:", error);
     }      
