@@ -19,3 +19,6 @@ export const PRE_SEARCH =
 
 export const MIND_IMAGE_API = 
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/";
+
+export const LOGIN_IMAGE =
+"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r";

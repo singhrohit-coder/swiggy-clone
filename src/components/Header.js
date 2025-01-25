@@ -45,19 +45,19 @@ export const Header = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} className="mr-2"/>Search</Link>
             </li>
             
+            <Link to="/form">   
             <button 
             // sign-btn
             className="px-4 py-0" 
-            onClick={() => {
-              setBtnName(btnName === "Sign in" ? "Rohit": "sign in");
-              // btnName === "Sign in" 
+            onClick={() => { 
+              btnName === "Sign in" 
               // ? setBtnName("Logout") 
               // : setBtnName("Sign in");
             }}
             >
               {btnName}
-              {/* <li className="font-extrabold">{loggedInUser}</li> */}
             </button>
+            </Link>
 
             <li className="cursor-pointer">
               <Link to="/cart">
