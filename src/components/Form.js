@@ -52,12 +52,15 @@ const Form = () => {
                   autoComplete="off"
                   name="name"
                   id="name"
-                  placeholder="Name"
+                  placeholder="Name" 
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
                 />
+                {errors.name && touched.name ? (
+                  <p className="form-error text-red-400">{errors.name}</p>
+                  ) : null}
               </div>
               <div className="input-block">
                 <label
@@ -75,8 +78,11 @@ const Form = () => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none "
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
                 />
+                {errors.email && touched.email ? (
+                  <p className="form-error text-red-400">{errors.email}</p>
+                  ) : null}
               </div>
               <div className="input-block">
                 <label
@@ -94,8 +100,11 @@ const Form = () => {
                   value={values.phoneNumber}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none "
                 />
+                {errors.phoneNumber && touched.phoneNumber ? (
+                  <p className="form-error text-red-400">{errors.phoneNumber}</p>
+                  ) : null}
               </div>
             </div>
             <button
