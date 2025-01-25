@@ -4,7 +4,7 @@ import CostButton from "./CostButton";
 const ButtonList = ({ listOfRestaurants, setFilteredRestaurants }) => {
 
     return (
-      <div className="filter m-4 p-4 flex items-center">
+      <div className="filter m-4 p-4 flex space-x-2">
         <RateButton
         listOfRestaurants={listOfRestaurants}
         setFilteredRestaurants={setFilteredRestaurants}

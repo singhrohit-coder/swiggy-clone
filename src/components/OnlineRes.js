@@ -24,7 +24,7 @@ const OnlineRes = () => {
         const json = await data.json();
     
         const mainTitle = json?.data;
-        setResOnline(mainTitle?.cards[2]?.card?.card?.title);
+        setResOnline(mainTitle?.cards[1]?.card?.card?.title);
         //console.log(mainTitle?.cards[2]);
         const restaurants =
         json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
@@ -46,17 +46,16 @@ const OnlineRes = () => {
             <div>
               <div className="px-3">
               {/* Online Restaurants Title */}
-              <h2 className="text-2xl font-bold my-4">
+              <h2 className="text-2xl font-bold mt-6 -mb-8">
                 {resOnline}
               </h2>
               </div>
-              <ButtonList 
+              <ButtonList
               listOfRestaurants={listOfRestaurants}
               setFilteredRestaurants={setFilteredRestaurants}
-              className="mb-20"
               />
               {/* Restaurant Cards */}
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center -mt-10">
                 {filteredRestaurants.map((restaurant) => (
                   <Link
                     key={restaurant.info.id}

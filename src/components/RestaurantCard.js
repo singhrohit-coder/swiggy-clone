@@ -16,7 +16,7 @@ const RestaurantCard = (props) => {
 
     return (
       <div>
-      <div className="res-card p-0 m-5 rounded-xl w-[195px] transition-transform duration-300 hover:scale-95 bg-yellow-200">
+      <div className="res-card p-0 m-5 rounded-xl w-[195px] transition-transform duration-300 hover:scale-95">
         <img
         // res-logo aspect-square
           className="rounded-xl w-full h-[130px] object-cover"

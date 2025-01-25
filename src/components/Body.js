@@ -21,9 +21,9 @@ const Body = () => {
   
   return  (
     <div className="body">
-      {/* <MindRes /> */}
+      <MindRes />
       {/* <TopRes /> */}
-      {/* <OnlineRes /> */}
+      <OnlineRes />
       <Footer />
       {/* <div className="filter flex">
         {/* search */}

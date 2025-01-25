@@ -2,8 +2,8 @@
 
 const CostButton = ({listOfRestaurants, setFilteredRestaurants}) => {
     return (
-        <div className="filter m-4 p-4 flex items-center">
-            <button className="px-4 py-1 font-semibold bg-white border border-gray-950 mx-2 rounded-full"
+        <div className="filter py-6 space-x-4">
+            <button className="px-4 py-1 font-medium bg-white border border-gray-500 mx-2 rounded-full"
             onClick={() => {
                 const filteredList = listOfRestaurants.filter((res) => {
                     // Extract numeric value from the cost string
