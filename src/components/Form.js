@@ -13,16 +13,14 @@ const Form = () => {
     const {values, errors, touched, handleBlur, handleChange, handleSubmit} = useFormik({
         initialValues: initialValues,
         validationSchema: signInSchema,
-        onSubmit: (values) => {
+        onSubmit: (values, action) => {
             console.log(values);
+            action.resetForm(); // after click on continue data dissapear.
         },
     });
 
-    // {errors.name && touched.name ? (
-    //     <p className="form-error">{errors.name}</p>
-    //     ) : null}
-    // for error
-    console.log(errors);
+    
+    console.log(errors); 
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-br bg-orange-50">
