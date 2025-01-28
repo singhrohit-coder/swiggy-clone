@@ -22,3 +22,10 @@ export const MIND_IMAGE_API =
 
 export const LOGIN_IMAGE =
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r";
+
+export const MIND_CUIS_RES =
+"https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4329271&lng=81.7583495&collection=";
+
+// "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/rng/md/carousel/production/b4ff78ecc5b8b66f732dd06228916d65"
+
+// "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/rng/md/carousel/production/5dd234f7decdac4b4f71a2ff1408e10f"

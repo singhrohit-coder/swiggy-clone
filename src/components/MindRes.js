@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import useMindRes from "../utils/useMindRes";
 import { MIND_IMAGE_API } from "../utils/constants";
-import MindResCard from "./MindResCard";
+//import MindResCard from "./MindResCard";
 // import Shimmer from "./shimmer";
 
 const MindRes= () => {
@@ -32,15 +32,15 @@ const MindRes= () => {
 
             setResTitle(json?.data?.cards[0]?.card?.card?.header?.title);
             setImageCard(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
-
+            //console.log(json.data.cards[0]);
         } catch (error) {
             console.error("Error fetching data:", error)
         }
     };
 
     return (
-        <div className="body shadow-md">
-            <div className="title px-32 mt-4 text-2xl font-bold bprder border-orange-950">
+        <div className="body shadow-sm">
+            <div className="title px-32 mt-4 text-2xl font-bold border-stone-50">
                 {resTitle && (
                     <h2>{resTitle}</h2>)}
             
@@ -51,7 +51,7 @@ const MindRes= () => {
                     key={index}
                     >
                         {/* <MindResCard /> */}
-                        <div className="card m-4 p-0 rounded-xl w-[150px]">
+                        <div className="card m-2 p-0 rounded-xl w-[150px]">
                             <img
                                 src={MIND_IMAGE_API + restaurant?.imageId}
                                 alt="Restaurant image"

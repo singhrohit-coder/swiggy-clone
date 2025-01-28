@@ -3,6 +3,7 @@ import { BODY_API } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import ButtonList from "./ButtonList";
+import OnlineResShimmer from "./OnlineResShimmer";
 
 const OnlineRes = () => {
 
@@ -10,6 +11,7 @@ const OnlineRes = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     //console.log(listOfRestaurants);
+    const [isLoading, setIsLoading] = useState(true); // state to track loading
 
     //const [searchText, setSearchText] = useState("");
 
@@ -33,14 +35,26 @@ const OnlineRes = () => {
         //console.log(restaurants);
         setFilteredRestaurants(restaurants);
         //console.log(restaurants);   
+        setIsLoading(false); // Data has loaded
     } catch (error) {
         console.error("Error fetching data:", error);
-    }      
-    
-    };
+        setIsLoading(false); // Stop loading even or error
+    } 
+  };
+
+  // Render shimmer if loading
+  if (isLoading) {
+    return (
+      <div className="flex flex-wrap">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <OnlineResShimmer key={index} />
+        ))}
+      </div>
+    )
+  };
 
     return (
-      <div className="px-32">
+      <div className="px-32 bg-stone-50">
         <div className="body px-0">
           {resOnline && (
             <div>
@@ -55,7 +69,7 @@ const OnlineRes = () => {
               setFilteredRestaurants={setFilteredRestaurants}
               />
               {/* Restaurant Cards */}
-              <div className="flex flex-wrap justify-center -mt-10">
+              <div className="flex flex-wrap justify-center -mt-10 mr-44">
                 {filteredRestaurants.map((restaurant) => (
                   <Link
                     key={restaurant.info.id}
