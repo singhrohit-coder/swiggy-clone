@@ -17,8 +17,7 @@ const Cart = () => {
     const handleSeeRestaurantsNearYou = () => {
         //console.log("Dispatching seeRestaurantsNearYou action");
         dispatch(seeRestaurantsNearYou());
-        navigate("/"); //navigate to home page 
-        
+        navigate("/"); //navigate to home page     
     }
 
     const handleClearCart = () => {
@@ -74,9 +73,9 @@ const Cart = () => {
           {/* Delivery Address */}
           <div className="mb-6">
             <h2 className="text-xl font-bold">Delivery Address:</h2>
-            <p className="text-gray-700">Suraj Gharpankar</p>
-            <p className="text-gray-700">Plot 28, Block 05, Rajarampuri, Kolhapur</p>
-            <p className="text-gray-700">416013</p>
+            <p className="text-gray-700">Rohit Singh</p>
+            <p className="text-gray-700">Mohali, Chandigarh</p>
+            <p className="text-gray-700">160049</p>
           </div>
     
           {/* Cart and Items */}
@@ -147,14 +146,6 @@ const Cart = () => {
           </div>
         </div>
       );
-
-
-
-
-
-
-
-
 };
 
 export default Cart;
