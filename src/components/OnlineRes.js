@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { BODY_API } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import ButtonList from "./ButtonList";
+import { BODY_API } from "../utils/constants";
 import OnlineResShimmer from "./OnlineResShimmer";
+import ButtonShimmer from "./ButtonShimmer";
 
 const OnlineRes = () => {
 
@@ -11,9 +12,9 @@ const OnlineRes = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     //console.log(listOfRestaurants);
+    const [searchRes, setSearchRes] = useState("");
     const [isLoading, setIsLoading] = useState(true); // state to track loading
-
-    //const [searchText, setSearchText] = useState("");
+    //const [searchItem, setSearchItem] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -45,16 +46,21 @@ const OnlineRes = () => {
   // Render shimmer if loading
   if (isLoading) {
     return (
-      <div className="flex flex-wrap">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <OnlineResShimmer key={index} />
+      <div>
+      <div className="p-2 m-4 items-center pl-28">
+        <ButtonShimmer />
+      </div>
+      <div className="flex flex-wrap justify-center mr-44">
+        {Array.from({ length: 8 }).map((_, id) => (
+          <OnlineResShimmer key={id} />
         ))}
+      </div>
       </div>
     )
   };
 
     return (
-      <div className="px-32 bg-stone-50">
+      <div className="px-32">
         <div className="body px-0">
           {resOnline && (
             <div>
@@ -64,12 +70,34 @@ const OnlineRes = () => {
                 {resOnline}
               </h2>
               </div>
+              <div className=" flex flex-wrap">
+              <form className="search py-16 px-7" 
+              onSubmit={(e)=> {
+                e.preventDefault();
+            }}
+            >
+                <input
+            type="text"
+            data-testid="searchInput"
+            className="h-[30px] rounded-md bg-gray-200"
+            placeholder="  Search Res"
+            value={searchRes}
+            onChange={(e) => {
+              setSearchRes(e.target.value);
+              const filteredRestaurants = listOfRestaurants.filter((res) =>
+                res.info.name.toLowerCase().includes(searchRes.toLowerCase())
+              );
+              setFilteredRestaurants(filteredRestaurants);
+            }}
+          />
+          </form>
               <ButtonList
               listOfRestaurants={listOfRestaurants}
               setFilteredRestaurants={setFilteredRestaurants}
               />
+              </div>
               {/* Restaurant Cards */}
-              <div className="flex flex-wrap justify-center -mt-10 mr-44">
+              <div className="flex flex-wrap justify-center -mt-10 mr-44 ">
                 {filteredRestaurants.map((restaurant) => (
                   <Link
                     key={restaurant.info.id}
@@ -80,30 +108,7 @@ const OnlineRes = () => {
                   </Link>
                 ))}
               </div>
-              {/* Filter and Search Section */}
-              {/* <div className="filter flex"> */}
-                {/* Search Input */}
-                {/* <div className="search p-4 m-4">
-                  <input
-                    type="text"
-                    data-testid="searchInput"
-                    className="w-36 pl-2 border border-solid-black rounded-lg"
-                    value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
-                    placeholder="Search"
-                  />
-                  <button
-                    className="px-2 bg-orange-400 mx-2 rounded-lg"
-                    onClick={() => {
-                      const filteredRestaurant = listOfRestaurants.filter((res) =>
-                        res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                      );
-                      setFilteredRestaurants(filteredRestaurant);
-                    }}
-                  >
-                    Search
-                  </button>
-                </div> */}
+              
           </div>
           )}
         </div>
