@@ -35,7 +35,7 @@ const MindGrid= () => {
                 {resTitle && (
                     <h2>{resTitle}</h2>)}
                 </div>    
-                <div className="flex mr-32 ">
+                <div className="flex mr-28 ">
                     <div className="cursor-pointer flex justify-center items-center w-[30px] h-[30px] bg-[#e2e2e7] rounded-full mx-2">
                         <FaArrowLeft />
                     </div> 
