@@ -12,7 +12,7 @@ export const Footer = () => {
     return (
 
         // footer shadow-gray-400 mt-5
-        <div className="flex bg-orange-400 justify-center shadow-md">
+        <div className="flex bg-orange-400 border border-solid border-black justify-center shadow-md">
             <div className="foot-items">
                 <ul className="flex  p-4 m-4">
                     

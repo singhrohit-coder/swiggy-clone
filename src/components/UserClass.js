@@ -8,11 +8,11 @@ class UserClass extends React.Component {
         super(props);
 
         //console.log(props);
-        console.log(this.props.name + "Child Constructor");
+        //console.log(this.props.name + "Child Constructor");
 
         this.state = {
             userInfo: {
-                name: "Abhishek",
+                name: "Default",
                 locaton: "Default",
                 contact: "Default"
             }
@@ -25,15 +25,13 @@ class UserClass extends React.Component {
         const json = await data.json(); // not writing await leading to [promise] -> [pending]
 
         // updating our state variable / json data.
-        this.setState ({
-            userInfo: json,
-        });
-        console.log(json);
+        this.setState ({userInfo: json,});
+        //console.log(json);
     }
 
-    componentDidUpdate() {
-        console.log("Component Did Update");
-    }
+    // componentDidUpdate() {
+    //     console.log("Component Did Update");
+    // }
 
     // This method is called just before the component is removed from the DOM
     componentWillUnmount() {
@@ -42,7 +40,7 @@ class UserClass extends React.Component {
  
     render() {
         //const { name, location, contact} = this.props;
-        console.log(this.props.name + "FirstChild Render")
+        //console.log(this.props.name + "FirstChild Render")
 
         const { name, location, contact } = this.state.userInfo;
        

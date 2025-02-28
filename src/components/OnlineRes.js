@@ -27,11 +27,10 @@ const OnlineRes = () => {
         const json = await data.json();
     
         const mainTitle = json?.data;
-        setResOnline(mainTitle?.cards[1]?.card?.card?.title);
+        setResOnline(mainTitle?.cards?.[2]?.card?.card?.title);
         //console.log(mainTitle?.cards[2]);
         const restaurants =
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || [];
+        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
         setListOfRestaurants(restaurants);
         //console.log(restaurants);
         setFilteredRestaurants(restaurants);
@@ -64,14 +63,14 @@ const OnlineRes = () => {
         <div className="body px-0">
           {resOnline && (
             <div>
-              <div className="px-3">
+              <div className="px-3 -mt-6">
               {/* Online Restaurants Title */}
               <h2 className="text-2xl font-bold mt-6 -mb-8">
                 {resOnline}
               </h2>
               </div>
               <div className=" flex flex-wrap">
-              <form className="search py-16 px-7" 
+              <form className="search py-14 px-7" 
               onSubmit={(e)=> {
                 e.preventDefault();
             }}
@@ -79,8 +78,8 @@ const OnlineRes = () => {
                 <input
             type="text"
             data-testid="searchInput"
-            className="h-[30px] rounded-md bg-gray-200"
-            placeholder="  Search Res"
+            className="h-[40px] px-4 rounded-xl bg-white border border-black outline-none"
+            placeholder=" search"
             value={searchRes}
             onChange={(e) => {
               setSearchRes(e.target.value);
@@ -91,13 +90,15 @@ const OnlineRes = () => {
             }}
           />
           </form>
+          <div>
               <ButtonList
               listOfRestaurants={listOfRestaurants}
               setFilteredRestaurants={setFilteredRestaurants}
               />
               </div>
+              </div>
               {/* Restaurant Cards */}
-              <div className="flex flex-wrap justify-center -mt-10 mr-44 ">
+              <div className="flex flex-wrap justify-normal -mt-10">
                 {filteredRestaurants.map((restaurant) => (
                   <Link
                     key={restaurant.info.id}

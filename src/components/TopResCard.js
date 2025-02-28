@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constants";
+import { RESTAURANT_CARD_IMAGE_URL } from "../utils/constants";
 import { MdStars } from "react-icons/md";
 
 
@@ -11,15 +11,16 @@ const TopResCard = (props) => {
         avgRating,
         costForTwo,
         cuisines,
+        areaName,
         sla,
     } = topCard?.info;
 
     return (
-        <div>
-        <div className="m-4 p-0 rounded-xl w-[250px] transition-transform duration-300 hover:scale-95 shadow-lg">
+        <div className="">
+        <div className="m-4 p-2 rounded-xl w-[250px] bg-yellow-200 transition-transform duration-300 hover:scale-95 shadow-lg">
             <img className="rounded-xl w-full h-[175px] object-cover"
             alt={"res-logo"}
-            src={CDN_URL + cloudinaryImageId}
+            src={RESTAURANT_CARD_IMAGE_URL + cloudinaryImageId}
             />
             <h3 className="font-bold truncate">{name}</h3>
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -28,11 +29,12 @@ const TopResCard = (props) => {
             {<MdStars className="text-green-600 size-5"/>}</span>
                 <h4 className="font-semibold">{avgRating}</h4>
 
-                <span style={{ margin: "0 8px" }}>•</span>
+                <span style={{ margin: "0 4px" }}>•</span>
                 <h4 className="font-semibold">{sla?.slaString}</h4>
             </div>
             <h4 className="font-semibold text-gray-600 truncate">{cuisines.join(", ")}</h4>
             <h4 className="font-semibold text-gray-600">{costForTwo}</h4>
+            <h4 className="font-semibold text-gray-600">{areaName}</h4>
         </div>
        </div>    
     );

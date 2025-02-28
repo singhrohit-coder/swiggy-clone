@@ -1,42 +1,55 @@
-//import { useState, useEffect } from "react";
-//import { MENU_API, PRE_SEARCH } from "../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { RxCross2 } from "react-icons/rx";
 import PopularCuisines from "./PopularCuisines";
-
+import { useState } from "react";
 
 const Search = () => {
 
+    const [searchQuery, setSearchQuery] = useState("");
+    console.log(searchQuery);
 
-    
+    const handleClear = () => {
+        setSearchQuery("");
+    };
+
     return (
         <div className="Body">
-            <div className="search ">
+             <div className="search ">
                     {/* search box position  */}                
-          <div className="flex justify-center items-center mt-12 ">
+            <div className="flex justify-center items-center mt-12 ">
           {/* input element with icon */}
           {/* search box */}
-          <div className="relative">
+          <form className="relative"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+            {/* conditional rendering for search icon and cross icon */}
             <span className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            {searchQuery ? (
+                                <RxCross2 onClick={handleClear} className="cursor-pointer size-6 font-bold" />
+                            ) : (
+                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            )}
+            {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
             </span>
             <input type="text" 
-            className="search-bar px-5 py-3 w-[800px] font-medium text-gray-600"
+            className="search-bar px-5 py-3 w-[800px] font-medium text-gray-600 outline"
             placeholder="Search for restaurants and food"
+            value={searchQuery}
+            onChange={(e) => 
+                setSearchQuery(e.target.value)} // update searchText on input change
+                
             />
-            {/* <button 
-            className="px-2 bg-orange-400 mx-2 rounded-md">
-            searchItem</button> */}
-            </div>
+            </form>
             </div>
             <div className="px-60 my-4">
             <PopularCuisines />
             </div>
-            {/* <h1 className="font-semibold text-xl bg-yellow-100 p-6 m-6">
-            This is Search page</h1> */}
-            </div>
-        </div>
-    )
-}
-
+             </div>
+         </div>
+    ) 
+};
+ 
 export default Search;

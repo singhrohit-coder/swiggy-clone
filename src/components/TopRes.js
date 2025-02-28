@@ -21,7 +21,7 @@ const TopRes = () => {
             setResChainsTitle(json?.data?.cards[1]?.card?.card?.header?.title);
             setResChainCard(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setFilterChainCard(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-            console.log(json?.data)
+            // console.log(json?.data)
 
         } catch (error) {
             console.error("Error fetching Data:", error);
@@ -30,13 +30,12 @@ const TopRes = () => {
 
 
     return (
-        <div className="TopResBody px-32 shadow-md mt-10">
-                <div>
+        <div className="TopResBody px-32 mt-10" >
+                <div> 
                 {resChainsTitle && <h2 
-                className="resChainsTitle px-3 text-2xl font-bold">{resChainsTitle}
+                className="resChainsTitle px-3 text-2xl font-bold border-t border-gray-300">{resChainsTitle}
                 </h2>}
-                
-                <div className="resChainCard px-0 flex overflow-x-auto no-scrollbar">
+                <div className="resChainCard px-0 flex overflow-x-auto no-scrollbar border-b border-gray-300">
                     {filterChainCard.map((restaurant) => (
                         <Link 
                         key={restaurant?.info?.id}
@@ -48,32 +47,6 @@ const TopRes = () => {
                     </div>
                 </div>
          </div>  
-
-  //       <div className="px-32 ">
-  //   <div className="body px-0">
-  //     {/* Restaurant Chains Title */}
-  //     {resChainsTitle && (
-  //       <div className="px-24">
-  //         <h2 className="text-2xl font-bold my-4">
-  //           {resChainsTitle}
-  //         </h2>
-  //       </div>
-  //     )}
-
-  //     {/* Restaurant Chain Cards */}
-  //     <div className="flex overflow-x-auto no-scrollbar px-20 border-b-gray-300 shadow-sm"
-  //     style={{ height: "325px" }}>
-  //       {filterChainCard.map((restaurant) => (
-  //         <Link 
-  //           key={restaurant?.info?.id} 
-  //           to={"/restaurants/" + restaurant.info.id}
-  //         >
-  //           <TopResCard topCard={restaurant} />
-  //         </Link>
-  //       ))}
-  //     </div>
-  //   </div>
-  // </div>
     );
 };
 

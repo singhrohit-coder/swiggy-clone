@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { BODY_API, MIND_IMAGE_API } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { MdOutlineArrowForwardIos, MdOutlineArrowBackIos } from "react-icons/md";
+//import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 //import MindRes from "./MindRes";
 
 const MindGrid= () => { 
@@ -9,7 +10,7 @@ const MindGrid= () => {
     const [imageCard, setImageCard] = useState([]);
     const [filterMindRes, setFilterMindRes] = useState([]);
     const [current, setCurrent] = useState(0);
-    const slide = 3;
+    const slide = 5;
 
     useEffect(() => {
         fetchData();
@@ -48,28 +49,22 @@ const MindGrid= () => {
                 {resTitle && (
                     <h2>{resTitle}</h2>)}
                 </div>    
-                <div className="flex mr-28 ">
-                    <div className="cursor-pointer flex justify-center items-center w-[30px] h-[30px] bg-[#e2e2e7] rounded-full mx-2"
-                    onClick={prevSlide}>
-                        <FaArrowLeft />
-                    </div> 
-                    <div className="cursor-pointer flex justify-center items-center w-[30px] h-[30px] bg-[#e2e2e7] rounded-full mx-2"
-                    onClick={nextSlide}>
-                        <FaArrowRight />
-                    </div>
-                </div>  
                 </div>
-
-                <div
-                className="cards-container px-4 mx-28 flex gap-4 mt-4 overflow-x-auto no-scrollbar"
-                style={{
-                    transform: `translateX(-${current * (150)}px)`, // Adjust 150px for card width and 16px for gap
-                    transition: "transform 0.5s ease", // Smooth sliding transition
-                }}
-            >
+                <div className="relative">
+                    <div className="cursor-pointer absolute top-16 left-28 transform -translate-x-1/2 flex justify-center items-center w-[40px] h-[40px] bg-[#e2e2e7] rounded-full hover:bg-orange-400 z-10"
+                    onClick={prevSlide}>
+                        <MdOutlineArrowBackIos />
+                </div>
+  
+                <div className="cards-containe px-4 mx-28 flex gap-4 mt-4 overflow-x-auto no-scrollbar">
                 {imageCard.map((grid) => (
-                    <Link key={grid.id} to={"/cards/" + grid.id}>
-                        <div className="card w-[150px]">
+                    <Link to={"/cards/" + grid.id} key={grid.id}>
+                        <div className="card w-[150px]"
+                         style={{
+                            transform: `translateX(-${current * (150)}px)`, // Adjust 150px for card width and 16px for gap
+                            transition: "transform 0.5s ease", // Smooth sliding transition
+                        }}
+                        >
                             <img
                                 src={MIND_IMAGE_API + grid?.imageId}
                                 alt="Restaurant image"
@@ -78,7 +73,10 @@ const MindGrid= () => {
                         </div>
                     </Link>
                 ))}
-            </div>
+                <div className="cursor-pointer absolute right-24 top-16 transform flex justify-center items-center w-[40px] h-[40px] bg-[#e2e2e7] rounded-full hover:bg-orange-400 z-10"
+                    onClick={nextSlide}>
+                        <MdOutlineArrowForwardIos />
+                    </div>
                 {/* <div className="cards-container px-4 mx-28 gap-4 mt-4 flex overflow-x-auto no-scrollbar">
                 {imageCard.map((grid) => (
                       <Link 
@@ -97,6 +95,8 @@ const MindGrid= () => {
                     </Link>
                 ))}
             </div>   */}
+        </div>
+        </div>
         </div>
     )
 };

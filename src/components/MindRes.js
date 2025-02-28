@@ -14,7 +14,9 @@ const MindRes = () => {
     }, []);
 
 const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83631&tags=layout_CCS_Pizza&sortBy=&filters=&type=rcv2&offset=0&page_type=null");
+    const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83669&tags=layout_CCS_Rolls&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+        );
     const json = await data.json();
     
     console.log(json);

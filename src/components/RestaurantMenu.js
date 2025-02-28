@@ -4,6 +4,7 @@ import RestaurantCategories from "./RestaurantCategories";
 import { MdStars } from "react-icons/md";
 import MenuShimmer from "./MenuShimmer";
 
+
 const RestaurantMenu = () => {
     const { resId } = useParams(); // useParams -> for reading restaurant Id
     
@@ -14,8 +15,8 @@ const RestaurantMenu = () => {
     const { name, cuisines, costForTwoMessage, avgRating, totalRatingsString, sla } = 
     resInfo?.cards?.[2]?.card?.card?.info;
 
-    const { itemCards }  = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card.card;
-    //console.log("itemCards:", itemCards);
+    const { itemCards }  = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card.card;
+    // console.log("itemCards:", itemCards);
 
     // Item Category inside Restaurant Cards.
     const categories = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -42,6 +43,7 @@ const RestaurantMenu = () => {
              {categories.map((category) => (
                  <RestaurantCategories 
                  key={category?.card?.card?.title} 
+                 // data -> props coming from Restaurant Categories.
                  data = {category.card.card}
                  />
              ))}

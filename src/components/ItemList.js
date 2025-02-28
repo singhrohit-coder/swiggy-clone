@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constants";
+import { RESTAURANT_CARD_IMAGE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 
@@ -26,7 +26,7 @@ const ItemList = ({items}) => {
                 <div
                 data-testId = "foodItem" // for testing.. 
                 key = {item?.card?.info?.id} 
-                className="p-2 m-2 border-yellow-300 border-b-4 flex justify-between rounded-lg">
+                className="p-2 m-2 border-yellow-100 border-b-2 flex justify-between">
                     <div className="w-9/12">
                     <div className="py-2">
                         <div className="text-lg font-bold">{item?.card?.info?.name}</div>
@@ -42,7 +42,7 @@ const ItemList = ({items}) => {
                     <div className="w-3/12 p-2">
                     <div className="relative">
                       <img
-                      src={CDN_URL + item?.card?.info?.imageId}
+                      src={RESTAURANT_CARD_IMAGE_URL + item?.card?.info?.imageId}
                       className="w-full rounded-lg"
                       alt="Dish"
                       />
