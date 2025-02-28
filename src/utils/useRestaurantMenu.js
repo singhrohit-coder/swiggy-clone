@@ -12,14 +12,12 @@ const useRestaurantMenu = (resId) => { // resId -> inputresId
  
     // MENU_API + resId+ resId
     const fetchMenu = async () => {
-        const data = await fetch( 
-            MENU_API + resId
-        );
+        const data = await fetch(MENU_API + resId);
         const json = await data.json();
         setResInfo(json.data); // because error -> reading [2] undefined
-         //console.log(json);
+        //console.log(json);
     };
-
+    
     return resInfo; // resInfo -> output
 };
 
