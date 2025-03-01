@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LOGIN_IMAGE } from "../utils/constants";
-import { RxCross2 } from "react-icons/rx";
 import { closeForm } from "../utils/appSlice";
 import { useDispatch } from "react-redux";
 import { FaTimes } from "react-icons/fa";
@@ -19,12 +18,12 @@ const LoginToggle = () => {
     if (!isFormOpen) return null;
 
     return (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-end">
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-end z-[1000]">
       {/* Sidebar Content */}
-      <div className="w-[400px] bg-white h-full shadow-lg p-6 relative">
+      <div className="w-[400px] bg-white h-full shadow-lg p-6 relative z-[1001]">
         {/* Close Button */}
         <button 
-          className="absolute top-4 right-4 text-gray-500 hover:text-black"
+          className="absolute top-4 right-4 text-gray-500 hover:text-black z-[1002]"
           onClick={handleClear}
         >
           <FaTimes className="cursor-pointer size-6 font-bold mr-auto"/>
@@ -34,7 +33,7 @@ const LoginToggle = () => {
         <img 
         src={LOGIN_IMAGE} 
         alt="sign in" 
-        className="w-15 h-15 size-24 rounded-full ml-auto mt-10"/>
+        className="w-15 h-15 size-24 rounded-full ml-auto mt-10 z-[1003] relative"/>
 
         <h1 className="font-semibold text-3xl -mt-24">Login</h1>
 
