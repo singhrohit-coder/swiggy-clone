@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Body from "../components/Body";
 import Header from "../components/Header";
-// import Error from "../components/Error";
 import RestaurantMenu from "../components/RestaurantMenu";
 import Cart from "../components/Cart";
 import Form from "../components/Form";
@@ -30,6 +29,7 @@ const SwiggyComponent = () => {
         {/*This is where the Body component will be rendered */}
         <Outlet /> 
         </UserContext.Provider>
+        
     );
 };
 
