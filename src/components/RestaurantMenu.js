@@ -24,9 +24,11 @@ const RestaurantMenu = () => {
     //console.log(categories);
     
     return (
-        <div className=" menu px-60">
+        <div className="w-full flex justify-center items-center">
+        <div className=" menu ">
             <h1 className="font-bold my-6 text-2xl">{name}</h1> 
-            <div className="bg-yellow-50 shadow-lg rounded-3xl p-6 border-8 border-orange-300 ">
+            <div className="w-[600px]">
+            <div className=" bg-yellow-50 shadow-lg rounded-3xl p-6 border-8 border-orange-300 ">
             <div className="font-bold text-m">
                 <div className=" flex gap-2">            
                     <MdStars className="text-green-600 my-1 size-5" />
@@ -39,7 +41,9 @@ const RestaurantMenu = () => {
             <h3>{sla?.slaString}</h3>
             </div>
             </div>
-              {/* Categories Accordion */}
+            </div>
+             {/* Categories Accordion */}
+            <div className="w-[600px] mt-2">
              {categories.map((category) => (
                  <RestaurantCategories 
                  key={category?.card?.card?.title} 
@@ -47,6 +51,8 @@ const RestaurantMenu = () => {
                  data = {category.card.card}
                  />
              ))}
+             </div>
+        </div>
         </div>
     );
 };
