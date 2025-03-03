@@ -13,10 +13,6 @@ const ItemList = ({items}) => {
      const dispatch = useDispatch();
      // add [item] to our cart
     const handleAddItems = (item) => {
-        // const newItem = {
-        //     ...item, 
-        //     quantity: 1, // Ensure quantity is set
-        // };
         dispatch(addItem(item));
     };
     // const handleRemoveItems = (item) => {
@@ -77,24 +73,23 @@ const ItemList = ({items}) => {
 
                         {isItemInCart(item?.card?.info?.id) ? (
                             <div className="flex items-center space-x-2">
-                                {/* Increment button */}
-                                <button 
+                            {/* Decrement button */}
+                            <button
+                                className="text-red-500 font-bold text-lg"
+                                onClick={() => handleDecrement(item.card.info.id)}
+                            >
+                                <FaMinus />
+                            </button>
+                            {/* Quantity display */}
+                            <span className="text-lg">{itemQuantity(item.card.info.id)}</span>
+                            {/* Increment button */}
+                            <button
                                 className="text-green-600 font-bold text-lg"
-                                onClick={() => handleDecrement(item.card.info.id)} // Pass item id
-                                >
-                                    <FaMinus />
-                                </button>
-                                {/* Quantity display */}
-                                <span className="text-lg">{itemQuantity(item.card.info.id)}</span>
-
-                                {/* Decrement button */}
-                                <button
-                                className="text-green-600 font-bold text-lg"
-                                onClick={() => handleIncrement(item.card.info.id)} // Pass item id
-                                >
+                                onClick={() => handleIncrement(item.card.info.id)}
+                            >
                                 <FaPlus />
-                                </button>
-                            </div>  
+                            </button>
+                        </div>  
                         //     <button
                         // className="text-green-600 font-bold text-lg"
                         // onClick={() => handleRemoveItems(item)}
