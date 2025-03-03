@@ -13,6 +13,10 @@ const ItemList = ({items}) => {
      const dispatch = useDispatch();
      // add [item] to our cart
     const handleAddItems = (item) => {
+        // const newItem = {
+        //     ...item, 
+        //     quantity: 1, // Ensure quantity is set
+        // };
         dispatch(addItem(item));
     };
     // const handleRemoveItems = (item) => {
@@ -28,8 +32,8 @@ const ItemList = ({items}) => {
     };
 
     const itemQuantity = (id) => {
-        const item = cartItems.find((cartItem) => cartItem.id === id);
-        return item ? item.quantity : 1;
+        const item = cartItems.find((cartItem) => cartItem.card.info.id === id);
+        return item ? item.quantity : 0;
     };
 
     const isItemInCart = (id) => {
@@ -76,17 +80,17 @@ const ItemList = ({items}) => {
                                 {/* Increment button */}
                                 <button 
                                 className="text-green-600 font-bold text-lg"
-                                onClick={() => handleDecrement(item?.card?.info?.id)} // Pass item id
+                                onClick={() => handleDecrement(item.card.info.id)} // Pass item id
                                 >
                                     <FaMinus />
                                 </button>
                                 {/* Quantity display */}
-                                <span className="text-lg">{itemQuantity(item?.card?.info?.id)}</span>
+                                <span className="text-lg">{itemQuantity(item.card.info.id)}</span>
 
                                 {/* Decrement button */}
                                 <button
                                 className="text-green-600 font-bold text-lg"
-                                onClick={() => handleIncrement(item?.card?.info?.id)} // Pass item id
+                                onClick={() => handleIncrement(item.card.info.id)} // Pass item id
                                 >
                                 <FaPlus />
                                 </button>
