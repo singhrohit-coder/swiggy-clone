@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -11,6 +10,30 @@ const cartSlice = createSlice({
         addItem: (state, action) => {
             // we're mutating/modifying our state here.
             state.items.push(action.payload)
+        },
+        incrementCount: (state, action) => {
+            const itemId = action.payload;
+            // if item is match with the id it will be stored.
+            const item = state.items.find((cartItem) => cartItem.id === itemId);
+
+            if (item) {
+                // If the item is found, increase its quantity by 1
+                item.quantity += 1;
+            }
+        },
+        decrementCount: (state, action) => {
+            const itemId = action.payload;
+            const item = state.items.find((cartItem) => cartItem.id === itemId);
+
+            if (item) {
+                // If the item's quantity is 1, remove it from the cart
+                if (item.quantity === 1) {
+                    state.items = state.items.filter((cartItem) => cartItem.id !== itemId);
+                } else {
+                    // Otherwise, decrease the quantity by 1
+                    item.quantity -= 1;
+                }
+            }
         },
         // this reducer function will not need any action.
         removeItem: (state, action) => {
@@ -30,6 +53,6 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addItem, removeItem, clearCart, seeRestaurantsNearYou } = cartSlice.actions;
+export const { addItem, removeItem, incrementCount, decrementCount, clearCart, seeRestaurantsNearYou } = cartSlice.actions;
 
 export default cartSlice.reducer;

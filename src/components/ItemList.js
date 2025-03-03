@@ -1,7 +1,9 @@
 import { RESTAURANT_CARD_IMAGE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, incrementCount, decrementCount } from "../utils/cartSlice";
+import { addItem, removeItem, incrementCount, decrementCount } from "../utils/cartSlice";
 import { MdStars } from "react-icons/md";
+import { FaPlus, FaMinus } from "react-icons/fa";
+
 
 const ItemList = ({items}) => {
     //console.log(items);
@@ -27,8 +29,7 @@ const ItemList = ({items}) => {
 
     const itemQuantity = (id) => {
         const item = cartItems.find((cartItem) => cartItem.id === id);
-
-        return item ? item.quantity : 0;
+        return item ? item.quantity : 1;
     };
 
     const isItemInCart = (id) => {
@@ -40,7 +41,7 @@ const ItemList = ({items}) => {
         <div> 
             {items.map((item) => ( 
                 <div
-                data-testId = "foodItem" // for testing.. 
+                //data-testId = "foodItem" // for testing.. 
                 key = {item?.card?.info?.id} 
                 className="cursor-pointer p-2 m-2 border rounded-lg shadow-md flex justify-between">
                     <div className="w-9/12">
@@ -69,21 +70,33 @@ const ItemList = ({items}) => {
                       {/* Button Container */}
                       <div className="bg-white rounded-lg shadow-lg border border-gray-300 px-8 py-1">
                         {/* check if the item is alread in the cart */}
+
                         {isItemInCart(item?.card?.info?.id) ? (
-                                        <div>
-                                            <button
-                                                className="text-green-600 font-bold text-lg"
-                                                onClick={() => handleIncrement(item?.card?.info?.id)} // Pass item id
-                                            >
-                                                +
-                                            </button>
-                                            <button
-                                                className="text-green-600 font-bold text-lg"
-                                                onClick={() => handleDecrement(item?.card?.info?.id)} // Pass item id
-                                            >
-                                                -
-                                            </button>
-                                        </div> 
+                            <div className="flex items-center space-x-2">
+                                {/* Increment button */}
+                                <button 
+                                className="text-green-600 font-bold text-lg"
+                                onClick={() => handleDecrement(item?.card?.info?.id)} // Pass item id
+                                >
+                                    <FaMinus />
+                                </button>
+                                {/* Quantity display */}
+                                <span className="text-lg">{itemQuantity(item?.card?.info?.id)}</span>
+
+                                {/* Decrement button */}
+                                <button
+                                className="text-green-600 font-bold text-lg"
+                                onClick={() => handleIncrement(item?.card?.info?.id)} // Pass item id
+                                >
+                                <FaPlus />
+                                </button>
+                            </div>  
+                        //     <button
+                        // className="text-green-600 font-bold text-lg"
+                        // onClick={() => handleRemoveItems(item)}
+                        // >
+                        //   <FaMinus />
+                        //   </button>              
                         ) : (
                             // if item is not in the cart show add button
                             <button
