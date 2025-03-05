@@ -29,8 +29,11 @@ const ItemList = ({items}) => {
 
     const itemQuantity = (id) => {
         const item = cartItems.find((cartItem) => cartItem.card.info.id === id);
+        console.log(item.quantity)
         return item ? item.quantity : 0;
+        
     };
+    
 
     const isItemInCart = (id) => {
         // Check if any item in the cart matches the given item by comparing their IDs

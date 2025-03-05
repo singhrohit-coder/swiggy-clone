@@ -18,7 +18,7 @@ export const Header = () => {
 
   // Subscribing our store using selector
   const cartItems = useSelector((store) => store.cart.items);
-  //console.log(cartItems);
+  console.log(cartItems);
 
   const toggleFormHandler = () => {
     dispatch(toggleForm());
@@ -81,7 +81,9 @@ export const Header = () => {
                 borderRadius: "1px 1px 1px 1px", // Optional for slightly rounded corners
                 }}
                 >
-                {cartItems.length}</span> Cart</Link></li>
+                  {/* Calculates the total quantity of items in the cart by summing up their quantities. */}
+                  {cartItems?.reduce((sum, item) => sum + item.quantity, 0)}
+                </span> Cart</Link></li>
         </div>
       </div>
       </div>

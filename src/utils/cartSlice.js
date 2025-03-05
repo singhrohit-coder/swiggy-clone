@@ -8,37 +8,25 @@ const cartSlice = createSlice({
     }, 
     reducers: {
         // add an item to the cart or increase its quantity if it already exists
-        addItem: (state, action) => {
-        // check if the item is already in the cart    
-            const existingItem = state.items.find(item => item.card.info.id === action.payload.card.info.id);
-            if (existingItem) {
-                // if item is in the cart , increase the quantity
-                existingItem.quantity += 1; // Increase quantity if item exists
-            } else {
-                state.items.push({ ...action.payload, quantity: 1 }); // Add new item with quantity 1
-            }
+        addItem: (state, action) => {  
+          // Simply push the action payload with quantity 1
+        state.items.push({ ...action.payload, quantity: 1 });
         },
         // increase the quantity of an item in the cart
         incrementCount: (state, action) => {
-        // find the item in the cart by its ID
-            const item = state.items.find(item => item.card.info.id === action.payload);
-            if (item) {
-                // increase its quantity
-                item.quantity += 1;
-            }
+        // Find the item and increase its quantity
+        const item = state.items.find(item => item.card.info.id === action.payload);
+        item && (item.quantity += 1); // If item exists, increment its quantity
+
         },
         // decrease the quantity of an item , and remove it if the quantity reaches 0.
         decrementCount: (state, action) => {
-            // Find the item in the cart by its ID
+            // Find the item in the cart and decrement its quantity
             const item = state.items.find(item => item.card.info.id === action.payload);
-            if (item) {
-                 // Reduce the quantity
-                item.quantity -= 1;
-                // If the quantity is 0, remove the item from the cart
-                if (item.quantity === 0) {
-                    state.items = state.items.filter(i => i.card.info.id !== action.payload);
-                }
-            }
+            
+            // Decrement the quantity and remove the item if quantity is 0
+            item && (item.quantity -= 1);
+            item?.quantity === 0 && (state.items = state.items.filter(i => i.card.info.id !== action.payload));
         },
         removeItem: (state, action) => {
             state.items = state.items.filter(item => item.card.info.id !== action.payload);
