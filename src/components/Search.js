@@ -2,15 +2,40 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { RxCross2 } from "react-icons/rx";
 import PopularCuisines from "./PopularCuisines";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+//import DummyItem from "./DummyItem";
 
 const Search = () => {
 
+    // for storing items who will be fetch from the api
+    // const [item, setItem] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    console.log(searchQuery);
+    // console.log(searchQuery);
+
+    const fetchData = async () => {
+        // according to input result changes
+        const data = await fetch(
+          "https://dummyjson.com/recipes/search?q=" + searchQuery
+        );
+        const json = await data.json();
+        // update the state with the recipes form the api
+        setFilteredItems(json?.recipes);
+      };
+    
+      useEffect(() => {
+        if (searchQuery) {
+            fetchData();
+        } else {
+            setFilteredItems([]);
+        }
+      }, [searchQuery]); // why i write [searchQuery] in my dependency array ?
+      // user type the result update accordingly
 
     const handleClear = () => {
         setSearchQuery("");
+        setFilteredItems([]); // Reset to all items when search is cleared
     };
 
     return (
@@ -40,7 +65,6 @@ const Search = () => {
             value={searchQuery}
             onChange={(e) => 
                 setSearchQuery(e.target.value)} // update searchText on input change
-                
             />
             </form>
             </div>
@@ -48,8 +72,40 @@ const Search = () => {
             <PopularCuisines />
             </div>
              </div>
+
+             {/* dispalying items */}
+             
+             <div className="mt-6">
+                {filteredItems.length > 0 && (
+                    filteredItems.map((item) => (
+                    <Link to="/restaurants" key={item.id} className="p-2">
+                        <div className="flex">
+                            {item.image && (
+                                <img className="w-[75px]" src={item.image} alt={item.name} />
+                            )}
+                            <div className="mt-6 ml-3">
+                                <h3>{item.name}</h3>
+                            </div>
+                        </div>
+                    </Link>
+                    ))
+                    )}
+             </div>
+             {/* Display filtered items */}
+            {/* <div className="filtered-items mt-6">
+                {filteredItems.length > 0 ? (
+                    filteredItems.map((item) => (
+                        <div key={item.id} className="item">
+                            <h3>{item.name}</h3> */}
+                            {/* <p>{item.description}</p> */}
+                        {/* </div>
+                    ))
+                ) : (
+                    <p>No items found.</p>
+                )}
+            </div> */}
          </div>
-    ) 
+    );
 };
  
 export default Search;
