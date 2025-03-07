@@ -1,18 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { RxCross2 } from "react-icons/rx";
-import PopularCuisines from "./PopularCuisines";
 import { useState, useEffect } from "react";
+import Popular from "./Popular";
 import { Link } from "react-router-dom";
-//import DummyItem from "./DummyItem";
 
 const Search = () => {
 
-    // for storing items who will be fetch from the api
-    // const [item, setItem] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
-    // console.log(searchQuery);
+    //console.log(searchQuery);
 
     const fetchData = async () => {
         // according to input result changes
@@ -39,11 +36,10 @@ const Search = () => {
     };
 
     return (
-        <div className="Body">
+        <div className="Body justify-center items-center">
              <div className="search ">
                     {/* search box position  */}                
             <div className="flex justify-center items-center mt-12 ">
-          {/* input element with icon */}
           {/* search box */}
           <form className="relative"
           onSubmit={(e) => {
@@ -57,7 +53,6 @@ const Search = () => {
                             ) : (
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             )}
-            {/* <FontAwesomeIcon icon={faMagnifyingGlass} /> */}
             </span>
             <input type="text" 
             className="search-bar px-5 py-3 w-[800px] font-medium text-gray-600 outline"
@@ -68,42 +63,33 @@ const Search = () => {
             />
             </form>
             </div>
-            <div className="px-60 my-4">
-            <PopularCuisines />
-            </div>
              </div>
-
-             {/* dispalying items */}
-             
-             <div className="mt-6">
-                {filteredItems.length > 0 && (
+            {/* Conditionally render based on searchQuery */}
+            <div className="mt-6 ml-60 overflow-y-auto no-scrollbar h-[300px]">
+                {searchQuery && filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
-                    <Link to="/restaurants" key={item.id} className="p-2">
-                        <div className="flex">
-                            {item.image && (
-                                <img className="w-[75px]" src={item.image} alt={item.name} />
-                            )}
-                            <div className="mt-6 ml-3">
-                                <h3>{item.name}</h3>
+                        <Link to="/restaurants" key={item.id}>
+                            <div className="flex hover:bg-blue-50 py-2">
+                                {item.image && (
+                                    <img
+                                        className="w-[85px] rounded-md"
+                                        src={item.image}
+                                        alt={item.name}
+                                    />
+                                )}
+                                <div className="mt-6 ml-3">
+                                    <h3>{item.name}</h3>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
-                    ))
-                    )}
-             </div>
-             {/* Display filtered items */}
-            {/* <div className="filtered-items mt-6">
-                {filteredItems.length > 0 ? (
-                    filteredItems.map((item) => (
-                        <div key={item.id} className="item">
-                            <h3>{item.name}</h3> */}
-                            {/* <p>{item.description}</p> */}
-                        {/* </div>
+                        </Link>
                     ))
                 ) : (
-                    <p>No items found.</p>
+                    // Render Popular component if searchQuery is empty or no results
+                    <div className="my-4 mr-60">
+                    <Popular /> 
+                    </div>
                 )}
-            </div> */}
+            </div>
          </div>
     );
 };
