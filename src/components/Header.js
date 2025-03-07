@@ -1,5 +1,4 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { RiContactsBookLine } from "react-icons/ri";
@@ -11,8 +10,6 @@ import { toggleForm } from "../utils/appSlice";
 import { useDispatch } from "react-redux";
 
 export const Header = () => {
-
-  const [btnName, setBtnName] = useState("SignIn");
 
   const dispatch = useDispatch();
 
