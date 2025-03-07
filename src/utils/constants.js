@@ -16,12 +16,10 @@ export const MENU_API =
 "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.4329271&lng=81.7583495&restaurantId=";
 
 export const PRE_SEARCH = 
-"https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=25.4329271&lng=81.7583495";
-
+"https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=25.4347119&lng=81.76502990000002";
+                    
 export const MIND_RES_URL = 
 "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83369";
-//"https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=";
-// https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=80424&tags=layout_CCS_Dosa&sortBy=&filters=&type=rcv2&offset=0&page_type=null
 
 export const MIND_RES_IMAGE_URL = 
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"; 

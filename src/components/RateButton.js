@@ -6,7 +6,7 @@ const RateButton = ({ listOfRestaurants, setFilteredRestaurants}) => {
             <div className="filter py-6 space-x-4">
         <button
         // filter-btn
-          className="px-4 py-2 font-medium mx-2 rounded-xl bg-yellow-300 border border-black-500"
+          className="px-4 py-2 font-medium mx-2 rounded-xl border border-black-500 hover:bg-slate-100"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4.2

@@ -14,13 +14,11 @@ const OnlineRes = () => {
     //console.log(listOfRestaurants);
     const [searchRes, setSearchRes] = useState("");
     const [isLoading, setIsLoading] = useState(true); // state to track loading
-    //const [searchItem, setSearchItem] = useState("");
 
     useEffect(() => {
         fetchData();
     }, []);
-
-
+  
     const fetchData = async () => {
         try {
         const data = await fetch(BODY_API);

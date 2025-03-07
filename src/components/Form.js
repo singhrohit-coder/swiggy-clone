@@ -1,8 +1,11 @@
 import { useFormik } from "formik";
 import { signInSchema } from "../Schemas/Validation";
 import { LOGIN_IMAGE } from "../utils/constants";
+import { useState } from "react";
 
 const Form = () => {
+
+  const [btnName, setBtnName] = useState("SignIn");
 
     const initialValues = {
         name: "",
@@ -15,6 +18,7 @@ const Form = () => {
         validationSchema: signInSchema,
         onSubmit: (values, action) => {
             console.log(values);
+            // setBtnName("Logged In"); // Change button text to "Logged In"
             action.resetForm(); // after click on continue data dissapear.
         },
     });
@@ -26,12 +30,12 @@ const Form = () => {
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-br bg-orange-50">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-md p-8 rounded-2xl shadow-lg space-y-6 transform transition-all hover:shadow-2xl hover:scale-105 bg-orange-50"
+            className="w-full max-w-md p-8 rounded-2xl shadow-lg space-y-6  bg-orange-50"
           >
             <div className="flex items-center justify-between">
                 
                 <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
-                {/* image  */}
+                {/* image  transform transition-all hover:shadow-2xl hover:scale-105*/}
                 <img src={LOGIN_IMAGE}
                 alt="sign in image"
                 className="w-20 h-20 rounded-full"

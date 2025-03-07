@@ -31,7 +31,6 @@ const ItemList = ({items}) => {
         const item = cartItems.find((cartItem) => cartItem.card.info.id === id);
         console.log(item.quantity)
         return item ? item.quantity : 0;
-        
     };
     
 

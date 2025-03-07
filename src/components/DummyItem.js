@@ -1,6 +1,6 @@
-import Search from "./Search";
+//import Search from "./Search";
 
-const dummyItem = [
+const DummyItem = [
     {
         card: {
             info: {
@@ -53,4 +53,4 @@ const dummyItem = [
     }
 ];
 
-export default dummyItem;
+export default DummyItem;
