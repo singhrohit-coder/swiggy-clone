@@ -9,6 +9,7 @@ import MindRes from "../components/MindRes";
 import LoginToggle from "../components/LoginToggle";
 import Contact from "../components/Contact";
 import UserContext from "../utils/UserContext";
+import MindGridRes from "../components/MindGridRes";
 import React from "react";
 
 
@@ -69,6 +70,10 @@ const SwiggyRoutes = [
           {
             path: "/cards/:cardId",
             element: <MindRes />,
+          },
+          {
+            path: "/res/:collectionId",
+            element: <MindGridRes />,
           },
           {
             path: "/body",

@@ -19,7 +19,7 @@ export const Footer = () => {
                     <li className="px-2 font-semibold text-white"><Link to="/about">About</Link></li>
                     <h1 className="px-4 font-semibold text-white">Created By Rohit Singh</h1>
                     <li className="px-2 xNIjm">
-                        <Link to="https://mail.google.com/mail/u/0/?tab=rm&ogbl#all?compose=new">
+                        <Link to="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">
                         <CgMail className="size-6 text-white"/>
                         </Link>
                     </li>

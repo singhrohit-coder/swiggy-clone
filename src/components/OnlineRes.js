@@ -58,37 +58,39 @@ const OnlineRes = () => {
 
     return (
       <div className="px-32">
-        <div className="body px-0">
+        <div className="body ">
           {resOnline && (
             <div>
-              <div className="px-3 -mt-6">
+              <div className=" px-3 mt-2 pt-0.5">
               {/* Online Restaurants Title */}
-              <h2 className="text-2xl font-bold mt-6 -mb-8">
+              <h2 className="text-2xl font-bold mt-1 mb-1 ">
                 {resOnline}
               </h2>
               </div>
-              <div className=" flex flex-wrap">
-              <form className="search py-14 px-7" 
-              onSubmit={(e)=> {
-                e.preventDefault();
-            }}
-            >
+          <div className="flex flex-col gap-2 rounded-lg mt-2 mb-2 h-[80px]">
+            {/* Search Bar and Buttons */}
+            <div className="flex items-center gap-4 overflow-y-hidden no-scrollbar">
+              {/* Search Form */}
+              <form 
+              className="flex items-center gap-2 pl-2 py-2 rounded-lg" 
+              onSubmit={(e) => e.preventDefault()}
+              >
                 <input
-            type="text"
-            data-testid="searchInput"
-            className="h-[40px] px-4 rounded-xl bg-white border border-black outline-none"
-            placeholder=" search"
-            value={searchRes}
-            onChange={(e) => {
-              setSearchRes(e.target.value);
-              const filteredRestaurants = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchRes.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRestaurants);
-            }}
-          />
-          </form>
-          <div>
+                type="text"
+                data-testid="searchInput"
+                className="h-10 rounded-md bg-white border-2 border-gray-200 px-3 outline-none"
+                placeholder="Search Restaurant"
+                value={searchRes}
+                onChange={(e) => {
+                  setSearchRes(e.target.value);
+                  const filteredRestaurants = listOfRestaurants.filter((res) =>
+                    res.info.name.toLowerCase().includes(e.target.value.toLowerCase())
+                );
+                setFilteredRestaurants(filteredRestaurants);
+              }}
+              />
+              </form>
+              {/* Button List */}
               <ButtonList
               listOfRestaurants={listOfRestaurants}
               setFilteredRestaurants={setFilteredRestaurants}
@@ -96,7 +98,7 @@ const OnlineRes = () => {
               </div>
               </div>
               {/* Restaurant Cards */}
-              <div className="flex flex-wrap justify-normal -mt-10">
+              <div className="flex flex-wrap justify-normal">
                 {filteredRestaurants.map((restaurant) => (
                   <Link
                     key={restaurant.info.id}
@@ -107,8 +109,7 @@ const OnlineRes = () => {
                   </Link>
                 ))}
               </div>
-              
-          </div>
+          </div> 
           )}
         </div>
         </div>

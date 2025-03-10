@@ -1,21 +1,21 @@
-// import { useState, useEffect } from "react";
-// import { MIND_RES_URL } from "./constants";
+import { useState, useEffect } from "react";
+import { MIND_GRID_RES_API } from "./constants";
 
-// const useMindRes = (cardId) => {
+const useMindRes = (collectionId) => {
 
-//     const [mindInfo, setMindInfo] = useState(null);
+    const [mindInfo, setMindInfo] = useState(null);
 
-//     useEffect(() => {
-//         fetchData();
-//     }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-//     const fetchData = async () => {
-//         const data = await fetch(MIND_RES_URL + cardId);
-//         const json = await data.json();
-//         setMindInfo(json.data);
-//     };
+    const fetchData = async () => {
+        const data = await fetch(MIND_GRID_RES_API + collectionId);
+        const json = await data.json();
+        setMindInfo(json.data);
+    };
 
-//     return mindInfo; // output
-// };
+    return mindInfo; // output
+};
 
-// export default useMindRes;
+export default useMindRes;

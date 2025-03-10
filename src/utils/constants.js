@@ -32,3 +32,9 @@ export const MIND_IMAGE_API =
 
 export const LOGIN_IMAGE =
 "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r";
+
+export const MIND_GRID_RES = 
+"https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83637&tags=layout_CCS_Burger&sortBy=&filters=&type=rcv2&offset=0&page_type=null";
+
+export const MIND_GRID_RES_API = 
+"https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83669&tags=layout_CCS_Rolls&sortBy=&filters=&type=rcv2&offset=0&page_type=null";

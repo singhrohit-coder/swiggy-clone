@@ -36,10 +36,10 @@ const Search = () => {
     };
 
     return (
-        <div className="Body justify-center items-center">
-             <div className="search ">
+        <div className="Body justify-center items-center border border-black w-full">
+             {/* <div className="search border border-orange-700 "> */}
                     {/* search box position  */}                
-            <div className="flex justify-center items-center mt-12 ">
+            <div className="flex justify-center items-center mt-8">
           {/* search box */}
           <form className="relative"
           onSubmit={(e) => {
@@ -55,7 +55,7 @@ const Search = () => {
                             )}
             </span>
             <input type="text" 
-            className="search-bar px-5 py-3 w-[800px] font-medium text-gray-600 outline"
+            className="search-bar px-5 py-3 w-[600px] font-medium text-gray-600 outline"
             placeholder="Search for restaurants and food"
             value={searchQuery}
             onChange={(e) => 
@@ -63,9 +63,9 @@ const Search = () => {
             />
             </form>
             </div>
-             </div>
+            {/* </div> */}
             {/* Conditionally render based on searchQuery */}
-            <div className="mt-6 ml-60 overflow-y-auto no-scrollbar h-[300px]">
+            <div className="mt-6 ml-60 overflow-y-hidden no-scrollbar h-[300px]">
                 {searchQuery && filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
                         <Link to="/restaurants" key={item.id}>

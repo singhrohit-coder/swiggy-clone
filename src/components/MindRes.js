@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import MenuShimmer from "./MenuShimmer";
 import { Link } from "react-router-dom";
-import { MIND_RES_IMAGE_URL } from "../utils/constants";
+import { MIND_RES_IMAGE_URL, MIND_GRID_RES } from "../utils/constants";
 
 const MindRes = () => {
 
@@ -14,9 +14,7 @@ const MindRes = () => {
     }, []);
 
 const fetchData = async () => {
-    const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5114876&lng=77.11444089999999&collection=83669&tags=layout_CCS_Rolls&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
-        );
+    const data = await fetch(MIND_GRID_RES);
     const json = await data.json();
     
     console.log(json);
