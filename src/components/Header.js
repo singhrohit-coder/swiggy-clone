@@ -23,9 +23,9 @@ export const Header = () => {
 
     return (
       // body
-      <div className="p-[15px] shadow-xl">
+      <div className="p-[15px] w-full shadow-xl flex flex-wrap">
       {/* flex justify-between items-center */}
-      <div className="max-w-[1200px] mx-auto flex items-center">
+      <div className=" w-[150px] flex items-center">
          {/* logo-container */}
          <Link to="/">
          <div className="logo-container w-[80px]">
@@ -37,25 +37,27 @@ export const Header = () => {
         </div>
         </Link>
         <div className="px-4 cursor-pointer">
-        <span className="font-bold border-b-[3px] border-[black] hover:text-orange-500 hover:border-orange-500">
-          Rajokri </span> Holi Chowk, Delhi, India <RxCaretDown 
+        <span className=" font-bold border-b-[3px] border-black hover:text-orange-500 hover:border-orange-500">
+          Rajokri </span><RxCaretDown 
             className="inline text-[0.9rem] text-black text-xl"/>
-        </div>
-        {/* nav-items */}
-        <div className="flex cursor-pointer list-none gap-12 ml-auto text-[17px] font-semibold"> 
-          <li className="flex items-center gap-4 hover:text-orange-500">
+        </div> 
+      </div>  
+        {/* nav-items */} 
+        <div className="flex items-center cursor-pointer list-none gap-8 ml-auto text-[17px] font-semibold"> 
+          <li className=" hover:text-orange-500">
               <Link to="/search/">
             <FontAwesomeIcon icon={faMagnifyingGlass} 
             className="mr-2 hover:text-orange-500"/>Search</Link>
             </li>
           
-          <li className="flex items-center gap-4 hover:text-orange-500">About</li>  
-          <Link to="/contact">
+          <li className=" hover:text-orange-500">About</li> 
+
+          {/* <Link to="/contact">
           <li className="flex items-center gap-1 hover:text-orange-500">
           <RiContactsBookLine className="size-5"/>
-          Contact</li></Link>
+          Contact</li></Link> */}
 
-            <li className="flex gap-4 items-center hover:text-orange-500">
+            <li className="hover:text-orange-500">
               <span className="flex items-center gap-2 ">
               {<FaUserLarge onClick={() => 
               toggleFormHandler()} // Call the function if the button name is "SignIn"
@@ -65,7 +67,7 @@ export const Header = () => {
                 </button>
               </span>
             </li>
-            <li className="flex gap-4 items-center hover:text-orange-500">
+            <li className="hover:text-orange-500">
               <Link to="/cart">
               <span style={{ 
                 backgroundColor: "green",
@@ -82,7 +84,6 @@ export const Header = () => {
                   {cartItems?.reduce((sum, item) => sum + item.quantity, 0)}
                 </span> Cart</Link></li>
         </div>
-      </div>
       </div>
     );
 };
