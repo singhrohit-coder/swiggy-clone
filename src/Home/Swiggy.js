@@ -4,7 +4,6 @@ import Body from "../components/Body";
 import Header from "../components/Header";
 import RestaurantMenu from "../components/RestaurantMenu";
 import Cart from "../components/Cart";
-import Form from "../components/Form";
 import MindRes from "../components/MindRes";
 import LoginToggle from "../components/LoginToggle";
 import Contact from "../components/Contact";
@@ -78,10 +77,6 @@ const SwiggyRoutes = [
           {
             path: "/body",
             element: <Body />,
-          },
-          {
-            path: "/form",
-            element: <Form />,
           },
           {
             path: "/cart",

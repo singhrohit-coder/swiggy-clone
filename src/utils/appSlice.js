@@ -13,14 +13,6 @@ const appSlice = createSlice({
         closeForm: (state) => {
             state.isFormOpen = false;
         },
-        // setFocus: (state, action) => {
-        //     // set the focused field
-        //     state.focusedOnline = action.payload;
-        // },
-        // setBlur: (state) => {
-        //     // Reset the focus field
-        //     state.focusedField = null;
-        // }
     },
 });
 
