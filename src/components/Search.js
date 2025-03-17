@@ -36,7 +36,7 @@ const Search = () => {
     };
 
     return (
-        <div className="Body justify-center items-center border border-black w-full">
+        <div className="Body justify-center items-center w-full">
              {/* <div className="search border border-orange-700 "> */}
                     {/* search box position  */}                
             <div className="flex justify-center items-center mt-8">
@@ -72,7 +72,7 @@ const Search = () => {
                             <div className="flex hover:bg-blue-50 py-2">
                                 {item.image && (
                                     <img
-                                        className="w-[85px] rounded-md"
+                                        className="w-[20px] rounded-md bg-orange-300"
                                         src={item.image}
                                         alt={item.name}
                                     />
