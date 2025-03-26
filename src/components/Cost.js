@@ -46,7 +46,7 @@ const Cost = ({
                 <span>₹ {gstAndRestaurantCharges.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-bold text-lg py-2 border-t">
-                <span>Total</span>
+                <span>TO PAY</span>
                 <span>₹ {totalBill.toFixed(2)}</span>
             </div>
         </div>
